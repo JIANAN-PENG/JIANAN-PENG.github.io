@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best AI Tools 2025 – Curated AI Tool Directory</title>
+<meta name="description" content="Discover the best AI tools for writing, image generation, video, coding, and productivity. Curated directory of top AI applications updated for 2025.">
+<meta name="keywords" content="AI tools, best AI tools, AI tools 2025, ChatGPT alternatives, AI writing tools, AI image generator, AI coding assistant, free AI tools">
+<link rel="canonical" href="https://yoursite.com/">
+<meta property="og:title" content="Best AI Tools 2025 – Curated AI Tool Directory">
+<meta property="og:description" content="Discover the best AI tools for writing, image generation, video, coding, and productivity.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+    --ad-bg: #141420;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  header {
+    text-align: center;
+    padding: 3.5rem 1rem 1.5rem;
+  }
+  header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+  }
+  header p {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Search */
+  .search-box {
+    max-width: 520px;
+    margin: 1.5rem auto 2.5rem;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: .85rem 1.2rem .85rem 3rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-box input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .search-box::before {
+    content: "🔍";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+  /* Category */
+  .category { margin-bottom: 2.5rem; }
+  .category-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    padding-left: .25rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .category-title::before {
+    content: "";
+    width: 4px;
+    height: 1.1em;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .18s, background .18s, box-shadow .18s;
+    display: flex;
+    align-items: flex-start;
+    gap: .85rem;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    box-shadow: 0 8px 30px rgba(108,92,231,.12);
+  }
+  .card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent), #a29bfe);
+  }
+  .card-body h3 { font-size: .95rem; font-weight: 600; margin-bottom: .2rem; }
+  .card-body p { font-size: .8rem; color: var(--text-dim); line-height: 1.4; }
+
+  /* Ad Banner */
+  .ad-banner {
+    margin: 2rem auto;
+    max-width: 1100px;
+    padding: 0 1rem;
+  }
+  .ad-inner {
+    background: var(--ad-bg);
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: .85rem;
+    letter-spacing: .05em;
+    position: relative;
+    overflow: hidden;
+  }
+  .ad-inner::before {
+    content: "AD";
+    position: absolute;
+    top: .5rem; left: .75rem;
+    font-size: .6rem;
+    background: var(--border);
+    padding: .15rem .4rem;
+    border-radius: 4px;
+    color: var(--text-dim);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-dim);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; margin: 0 .4rem; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.7rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ Best AI Tools 2025</h1>
+  <p>Curated directory of the best AI tools for every task — updated weekly</p>
+</header>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search AI tools..." oninput="filterTools(this.value)">
+</div>
+
+<div class="container" id="content">
+
+  <!-- Chat & Writing -->
+  <section class="category">
+    <div class="category-title">Chat & Writing</div>
+    <div class="grid">
+      <a href="https://chat.openai.com" target="_blank" rel="noopener" class="card" data-name="ChatGPT">
+        <div class="card-icon">🤖</div>
+        <div class="card-body"><h3>ChatGPT</h3><p>Leading AI chatbot by OpenAI. Great for writing, coding, and brainstorming.</p></div>
+      </a>
+      <a href="https://claude.ai" target="_blank" rel="noopener" class="card" data-name="Claude">
+        <div class="card-icon">🧠</div>
+        <div class="card-body"><h3>Claude</h3><p>Anthropic's AI assistant. Excels at long-form analysis and reasoning.</p></div>
+      </a>
+      <a href="https://gemini.google.com" target="_blank" rel="noopener" class="card" data-name="Gemini">
+        <div class="card-icon">✨</div>
+        <div class="card-body"><h3>Gemini</h3><p>Google's multimodal AI. Deep search integration and real-time info.</p></div>
+      </a>
+      <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="card" data-name="Perplexity">
+        <div class="card-icon">🔎</div>
+        <div class="card-body"><h3>Perplexity</h3><p>AI-powered search engine with cited, accurate answers.</p></div>
+      </a>
+      <a href="https://jasper.ai" target="_blank" rel="noopener" class="card" data-name="Jasper">
+        <div class="card-icon">✍️</div>
+        <div class="card-body"><h3>Jasper</h3><p>AI copywriting for marketing teams. Blog posts, ads, and emails.</p></div>
+      </a>
+      <a href="https://copy.ai" target="_blank" rel="noopener" class="card" data-name="Copy.ai">
+        <div class="card-icon">📝</div>
+        <div class="card-body"><h3>Copy.ai</h3><p>Free AI copywriter. Generate social posts, emails, and product copy.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Image & Design -->
+  <section class="category">
+    <div class="category-title">Image & Design</div>
+    <div class="grid">
+      <a href="https://midjourney.com" target="_blank" rel="noopener" class="card" data-name="Midjourney">
+        <div class="card-icon">🎨</div>
+        <div class="card-body"><h3>Midjourney</h3><p>Top-tier AI art generator. Stunning, painterly results.</p></div>
+      </a>
+      <a href="https://stability.ai" target="_blank" rel="noopener" class="card" data-name="Stable Diffusion">
+        <div class="card-icon">🖼️</div>
+        <div class="card-body"><h3>Stable Diffusion</h3><p>Open-source image generation. Run locally, full control.</p></div>
+      </a>
+      <a href="https://www.canva.com/ai-image-generator/" target="_blank" rel="noopener" class="card" data-name="Canva AI">
+        <div class="card-icon">🎯</div>
+        <div class="card-body"><h3>Canva AI</h3><p>Design platform with built-in AI image and text generation.</p></div>
+      </a>
+      <a href="https://remove.bg" target="_blank" rel="noopener" class="card" data-name="Remove.bg">
+        <div class="card-icon">✂️</div>
+        <div class="card-body"><h3>Remove.bg</h3><p>Instant AI background removal. Free and fast.</p></div>
+      </a>
+      <a href="https://leonardo.ai" target="_blank" rel="noopener" class="card" data-name="Leonardo AI">
+        <div class="card-icon">🖌️</div>
+        <div class="card-body"><h3>Leonardo AI</h3><p>AI art for game assets, concept art, and design.</p></div>
+      </a>
+      <a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener" class="card" data-name="Adobe Firefly">
+        <div class="card-icon">🔥</div>
+        <div class="card-body"><h3>Adobe Firefly</h3><p>Adobe's generative AI. Commercially safe image creation.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ▼ AD SLOT ▼ -->
+  <div class="ad-banner">
+    <div class="ad-inner" id="ad-slot-1">
+      <!-- Replace with your Google AdSense code -->
+      <span>Ad Space — 728×90 / Responsive</span>
+    </div>
+  </div>
+  <!-- ▲ AD SLOT ▲ -->
+
+  <!-- Video & Audio -->
+  <section class="category">
+    <div class="category-title">Video & Audio</div>
+    <div class="grid">
+      <a href="https://sora.com" target="_blank" rel="noopener" class="card" data-name="Sora">
+        <div class="card-icon">🎬</div>
+        <div class="card-body"><h3>Sora</h3><p>OpenAI's video generator. Photorealistic scenes from text.</p></div>
+      </a>
+      <a href="https://runwayml.com" target="_blank" rel="noopener" class="card" data-name="Runway">
+        <div class="card-icon">🎥</div>
+        <div class="card-body"><h3>Runway</h3><p>AI video editing and generation for creators.</p></div>
+      </a>
+      <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="card" data-name="ElevenLabs">
+        <div class="card-icon">🗣️</div>
+        <div class="card-body"><h3>ElevenLabs</h3><p>Ultra-realistic AI voice synthesis and cloning.</p></div>
+      </a>
+      <a href="https://suno.com" target="_blank" rel="noopener" class="card" data-name="Suno">
+        <div class="card-icon">🎵</div>
+        <div class="card-body"><h3>Suno</h3><p>Generate full songs from a text prompt. Any genre.</p></div>
+      </a>
+      <a href="https://heygen.com" target="_blank" rel="noopener" class="card" data-name="HeyGen">
+        <div class="card-icon">👤</div>
+        <div class="card-body"><h3>HeyGen</h3><p>AI avatar videos with lip-sync. Great for demos.</p></div>
+      </a>
+      <a href="https://descript.com" target="_blank" rel="noopener" class="card" data-name="Descript">
+        <div class="card-icon">🎙️</div>
+        <div class="card-body"><h3>Descript</h3><p>Edit audio/video by editing text. AI-powered studio.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Coding & Developer -->
+  <section class="category">
+    <div class="category-title">Coding & Developer</div>
+    <div class="grid">
+      <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="card" data-name="GitHub Copilot">
+        <div class="card-icon">💻</div>
+        <div class="card-body"><h3>GitHub Copilot</h3><p>AI pair programmer in your editor. Autocomplete++.</p></div>
+      </a>
+      <a href="https://cursor.sh" target="_blank" rel="noopener" class="card" data-name="Cursor">
+        <div class="card-icon">⚡</div>
+        <div class="card-body"><h3>Cursor</h3><p>AI-native code editor. Chat, edit, and build with AI.</p></div>
+      </a>
+      <a href="https://replit.com" target="_blank" rel="noopener" class="card" data-name="Replit">
+        <div class="card-icon">🔧</div>
+        <div class="card-body"><h3>Replit</h3><p>Online IDE with AI. Code, run, and deploy instantly.</p></div>
+      </a>
+      <a href="https://v0.dev" target="_blank" rel="noopener" class="card" data-name="v0 by Vercel">
+        <div class="card-icon">▲</div>
+        <div class="card-body"><h3>v0</h3><p>Generate UI components from text. React + Tailwind.</p></div>
+      </a>
+      <a href="https://codeium.com" target="_blank" rel="noopener" class="card" data-name="Codeium">
+        <div class="card-icon">🆓</div>
+        <div class="card-body"><h3>Codeium</h3><p>Free AI code completion. Supports 70+ languages.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Productivity -->
+  <section class="category">
+    <div class="category-title">Productivity</div>
+    <div class="grid">
+      <a href="https://notion.so" target="_blank" rel="noopener" class="card" data-name="Notion AI">
+        <div class="card-icon">📝</div>
+        <div class="card-body"><h3>Notion AI</h3><p>Notes + AI writing. Knowledge management reimagined.</p></div>
+      </a>
+      <a href="https://gamma.app" target="_blank" rel="noopener" class="card" data-name="Gamma">
+        <div class="card-icon">📊</div>
+        <div class="card-body"><h3>Gamma</h3><p>AI-powered presentations. Beautiful decks in seconds.</p></div>
+      </a>
+      <a href="https://grammarly.com" target="_blank" rel="noopener" class="card" data-name="Grammarly">
+        <div class="card-icon">✍️</div>
+        <div class="card-body"><h3>Grammarly</h3><p>AI writing assistant. Grammar, tone, and clarity.</p></div>
+      </a>
+      <a href="https://otter.ai" target="_blank" rel="noopener" class="card" data-name="Otter.ai">
+        <div class="card-icon">🦦</div>
+        <div class="card-body"><h3>Otter.ai</h3><p>AI meeting notes. Real-time transcription and summary.</p></div>
+      </a>
+      <a href="https://zapier.com" target="_blank" rel="noopener" class="card" data-name="Zapier AI">
+        <div class="card-icon">⚡</div>
+        <div class="card-body"><h3>Zapier AI</h3><p>Automate workflows between 6,000+ apps with AI.</p></div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>
+    <a href="about.html">About</a> ·
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+  <p style="margin-top:.6rem">Best AI Tools 2025 — Curated & Updated Weekly</p>
+</footer>
+
+<script>
+function filterTools(q) {
+  q = q.toLowerCase();
+  document.querySelectorAll('.card').forEach(c => {
+    const name = (c.dataset.name || '').toLowerCase();
+    const text = c.textContent.toLowerCase();
+    c.style.display = (name.includes(q) || text.includes(q)) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
