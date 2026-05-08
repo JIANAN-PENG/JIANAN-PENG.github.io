@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Waves of AI: From Rules to Large Models – AI Insights</title>
+<meta name="description" content="A deep dive into the three major waves of AI history — from expert systems to machine learning to today's large language models — and what they tell us about the future.">
+<link rel="canonical" href="https://jianan-peng.github.io/articles/01-three-waves-of-ai.html">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .nav {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .nav a:hover { text-decoration: underline; }
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  article h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: .85rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  article h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+  }
+  article h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 .75rem;
+  }
+  article p {
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  article ul, article ol {
+    margin: 0 0 1.2rem 1.5rem;
+    color: var(--text);
+  }
+  article li { margin-bottom: .5rem; }
+  article strong { color: #fff; }
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .5rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--card);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-dim);
+  }
+  article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  article th, article td {
+    padding: .75rem 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  article th {
+    background: var(--card);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: .85rem;
+    font-style: italic;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Back to AI Tools</a> · <a href="./">All Articles</a>
+</div>
+<article>
+  <h1>Three Waves of AI: From Hand-Crafted Rules to Large-Scale Models</h1>
+  <div class="meta">~3,800 words · 12 min read</div>
+
+  <h2>Prologue: Why Bother Learning AI History?</h2>
+  <p>Many people think AI was born when ChatGPT dropped in 2022. Not even close. Artificial intelligence as a discipline is nearly 70 years old. The ChatGPTs, Midjourneys, and Copilots of today didn't appear out of thin air — they're the culmination of decades of accumulated progress.</p>
+  <p>Understanding history isn't about archaeology. It's about grasping <strong>why AI ended up where it is today, and where it's headed next.</strong> Once you understand the rhythm of these waves, you can tell where you're standing and where the opportunities lie.</p>
+  <p>In this article, we'll walk through the three most important waves in AI history.</p>
+
+  <hr>
+
+  <h2>The First Wave: Expert Systems & Symbolism (1956 – Early 1990s)</h2>
+
+  <h3>The Starting Point: The Dartmouth Conference</h3>
+  <p>In the summer of 1956, a group of young scientists gathered at Dartmouth College for a two-month workshop. The organizer was John McCarthy — the man who coined the term "Artificial Intelligence." Attendees included Marvin Minsky, Claude Shannon, Allen Newell, Herbert Simon, and other future godfathers of AI.</p>
+  <p>The core hypothesis of that meeting was bold: <strong>human intelligence can be described using symbols and rules.</strong> Translate an expert's knowledge into rules a computer can follow, and the machine will think and decide just like that expert.</p>
+  <p>This approach later became known as <strong>Symbolism</strong>.</p>
+
+  <h3>The Golden Age of Expert Systems</h3>
+  <p>During the 1970s–80s, the symbolic approach hit its stride. The flagship product was the <strong>Expert System</strong>.</p>
+  <p>What's an expert system? Simply put, it takes domain expertise and encodes it as a stack of "if… then…" rules inside a computer.</p>
+  <p>Famous examples include:</p>
+  <ul>
+    <li><strong>MYCIN</strong> (1970s): A medical diagnostic system for blood infections. It contained roughly 600 rules and reportedly achieved 69% diagnostic accuracy — outperforming some human doctors.</li>
+    <li><strong>XCON/R1</strong> (1980s): DEC's system for configuring computer orders, saving the company tens of millions of dollars annually.</li>
+    <li><strong>Prolog</strong>: A programming language purpose-built for AI. Japan even made it the centerpiece of its "Fifth Generation Computer" project.</li>
+  </ul>
+  <p>In that era, entire nations bet big on AI. Japan's government poured $850 million into its Fifth Generation project; the UK and US launched similar national programs. Venture capital and corporations flooded in.</p>
+
+  <h3>The Bubble Bursts: The First AI Winter</h3>
+  <p>But problems surfaced quickly.</p>
+  <p><strong>First, the knowledge acquisition bottleneck.</strong> Extracting an expert's knowledge rule by rule was painfully slow and expensive. Building a single expert system could take years.</p>
+  <p><strong>Second, brittleness.</strong> Expert systems performed well within their narrow domain, but step slightly outside and they'd produce absurd answers. They had no "common sense."</p>
+  <p><strong>Third, insufficient compute.</strong> The hardware of the time simply couldn't support complex reasoning or large-scale data processing.</p>
+  <p>By the late 1980s, Japan's Fifth Generation project had fallen short of its goals. Investment dried up, governments slashed funding, and by the early 1990s the first AI winter had arrived.</p>
+
+  <h3>Impact on Everyday People</h3>
+  <p>Frankly, the first wave barely touched ordinary people. Expert systems were mostly used inside enterprises, and the public had almost no exposure. But the wave planted a critical seed: <strong>machines can outperform human experts at specific tasks</strong> — a seed that would eventually bloom into something extraordinary.</p>
+
+  <hr>
+
+  <h2>The Second Wave: The Rise of Machine Learning (1990s – Early 2010s)</h2>
+
+  <h3>A Shift in Philosophy: From "Teaching" to "Learning"</h3>
+  <p>The first wave was about humans teaching machines — write the rules, and the machine follows them. The second wave took a fundamentally different approach: <strong>let machines learn from data on their own.</strong></p>
+  <p>How did this shift happen? People realized that for many tasks, you simply can't write rules. How do you write rules to detect whether a photo contains a cat? How do you write rules to classify spam? The rules would be too numerous, too complex, too easy to circumvent — the rule-based approach to describing the world hit a dead end.</p>
+  <p>The solution? <strong>Let the machine look at the data and find patterns itself.</strong></p>
+
+  <h3>Key Breakthroughs</h3>
+  <ul>
+    <li><strong>Support Vector Machines (SVM)</strong>: Introduced by Vladimir Vapnik in the 1990s, SVMs delivered outstanding classification on small datasets and became the era's "killer algorithm."</li>
+    <li><strong>Random Forests & Ensemble Learning</strong>: Combine multiple "weak learners" into one "strong learner" — simple idea, exceptional results.</li>
+    <li><strong>Bayesian Methods</strong>: The backbone of spam filtering. Paul Graham's 2002 essay <em>A Plan for Spam</em> used naive Bayes to largely solve the spam problem, cleaning up inboxes worldwide.</li>
+    <li><strong>The Data Explosion from the Internet</strong>: The rise of Google, Amazon, and Facebook generated oceans of data. Machine learning algorithms finally had enough fuel.</li>
+    <li><strong>Kaggle Competitions</strong> (founded 2010): Turned data science into a competitive sport, massively accelerating algorithm iteration and adoption.</li>
+  </ul>
+
+  <h3>Key Figures & Companies</h3>
+  <ul>
+    <li><strong>Andrew Ng</strong>: Stanford professor, later head of Google Brain and Baidu AI, co-founder of Coursera. His machine learning course introduced millions worldwide to the field.</li>
+    <li><strong>Geoffrey Hinton</strong>: A pioneer of deep learning (more on him in the third wave), though his early work began during this era.</li>
+    <li><strong>Google</strong>: Born as a search engine, it was fundamentally a machine learning company. PageRank is a classic ML application.</li>
+    <li><strong>IBM Watson</strong>: Defeated human champions on <em>Jeopardy!</em> in 2011, becoming AI's breakout mainstream moment.</li>
+  </ul>
+
+  <h3>Impact on Everyday People</h3>
+  <p>This time, ordinary people finally felt AI's presence:</p>
+  <ul>
+    <li><strong>Search got smarter</strong>: Google stopped being just keyword matching and started understanding intent.</li>
+    <li><strong>Spam filtering</strong>: Your inbox suddenly got clean.</li>
+    <li><strong>Recommendation systems</strong>: Netflix recommended movies, Amazon recommended products, YouTube kept you scrolling.</li>
+    <li><strong>Voice assistants</strong>: Siri (2011), Google Now (2012) appeared. Clunky, sure — but you could talk to your phone.</li>
+  </ul>
+  <p><strong>One-sentence summary of the second wave: AI walked out of the lab and into your pocket.</strong></p>
+
+  <hr>
+
+  <h2>The Third Wave: Deep Learning & Large Models (2012 – Present)</h2>
+
+  <h3>The ImageNet Moment</h3>
+  <p>In 2012, a neural network called AlexNet crushed the ImageNet image recognition competition — its error rate was more than 10 percentage points lower than the runner-up.</p>
+  <p>This wasn't just winning a contest. It proved something fundamental: <strong>when you have enough data and enough compute, deep neural networks vastly outperform traditional machine learning.</strong></p>
+  <p>AlexNet was created by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton. Ilya later co-founded OpenAI; Hinton won the 2024 Nobel Prize in Physics.</p>
+  <p>This moment is often called "AI's iPhone moment."</p>
+
+  <h3>Why Did Deep Learning Suddenly Explode?</h3>
+  <p>Three conditions matured simultaneously:</p>
+  <ol>
+    <li><strong>Big Data</strong>: The internet had accumulated massive labeled datasets (ImageNet alone had 14 million labeled images).</li>
+    <li><strong>Big Compute</strong>: NVIDIA GPUs turned out to be perfect for neural networks. A single gaming GPU outperformed an entire rack of CPUs.</li>
+    <li><strong>Algorithmic Breakthroughs</strong>: ReLU activations, Dropout regularization, Batch Normalization, residual connections (ResNet) — a cascade of techniques finally made deep networks trainable.</li>
+  </ol>
+  <p>All three were essential. Deep learning didn't fail before because the ideas were wrong — it failed because data and compute hadn't caught up.</p>
+
+  <h3>From Narrow to General: The Large Model Era</h3>
+  <p>In 2017, Google published a world-changing paper: <strong>"Attention Is All You Need,"</strong> introducing the Transformer architecture.</p>
+  <p>Transformers were originally designed for machine translation, but people quickly discovered the architecture was nearly universal — it could handle text, images, audio, video, almost any type of data.</p>
+  <p>The rest of the story you probably know:</p>
+  <ul>
+    <li><strong>2018</strong>: Google released BERT; NLP was permanently disrupted.</li>
+    <li><strong>2020</strong>: OpenAI released GPT-3 with 175 billion parameters — the first time ordinary people felt the shock of "AI can write."</li>
+    <li><strong>November 2022</strong>: ChatGPT launched. 100 million users in two months. AI went from tech-circle topic to household conversation.</li>
+    <li><strong>2023–2024</strong>: GPT-4, Claude, Gemini, Llama, Mistral — large models bloomed everywhere. Multimodal capabilities exploded — AI could read, write, see, hear, and generate video.</li>
+    <li><strong>2024–2025</strong>: Reasoning models (o1, DeepSeek-R1) emerged; AI began "thinking" instead of just "recalling." Agent concepts took off, and AI started autonomously completing complex tasks.</li>
+  </ul>
+
+  <h3>Key Figures</h3>
+  <ul>
+    <li><strong>Ilya Sutskever</strong>: OpenAI co-founder who drove the GPT series. Later founded Safe Superintelligence Inc.</li>
+    <li><strong>Sam Altman</strong>: OpenAI CEO who pushed AI from the lab to the mass market.</li>
+    <li><strong>Demis Hassabis</strong>: DeepMind founder, the mind behind AlphaGo and AlphaFold.</li>
+    <li><strong>Jensen Huang</strong>: NVIDIA CEO, the "arms dealer" of AI compute. Without his GPUs, this wave might not have started.</li>
+    <li><strong>Liang Wenfeng</strong>: DeepSeek founder, who trained GPT-4-class models at a fraction of the cost, shaking the entire industry.</li>
+    <li><strong>Yang Zhilin</strong>: Moonshot AI founder and Kimi creator, representing China's new generation of LLM startups.</li>
+  </ul>
+
+  <h3>Impact on Everyday People</h3>
+  <p>This wave's impact is revolutionary and all-encompassing:</p>
+  <ul>
+    <li><strong>Writing & Creation</strong>: AI writes emails, reports, code, paints, composes music, and makes videos. The barrier to content creation has plummeted.</li>
+    <li><strong>Work Productivity</strong>: Copilot writes your code, AI builds your decks, auto-summaries read your papers. Knowledge workers are several times more productive.</li>
+    <li><strong>Education</strong>: AI can be everyone's private tutor, explaining any concept in terms you understand.</li>
+    <li><strong>Healthcare</strong>: AlphaFold solved protein folding; AI-assisted diagnosis now surpasses human doctors in many fields.</li>
+    <li><strong>Autonomous Driving</strong>: Tesla, Waymo, Baidu Apollo — not fully realized yet, but already reshaping how we get around.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Patterns Across the Three Waves</h2>
+
+  <h3>1. Waves Are Separated by "Winters"</h3>
+  <p>After every hype cycle, overblown expectations and immature tech trigger a trough. The first winter hit in the early 1990s; the second (sometimes called the "nuclear winter") came in the mid-2000s. <strong>We're now at the peak of the third wave — how long will it last? Will there be another winter?</strong> Every practitioner is thinking about this.</p>
+
+  <h3>2. Each Wave's Core Breakthrough Is a New Way of Learning</h3>
+  <ul>
+    <li>First wave: Humans write rules (Symbolism)</li>
+    <li>Second wave: Machines learn from data (Machine Learning)</li>
+    <li>Third wave: Machines learn general capabilities from massive data (Deep Learning + Large Models)</li>
+  </ul>
+  <p>At its core, it's about <strong>how humans teach machines evolving</strong> — from hand-holding, to giving them textbooks to self-study, to handing them an entire library and letting them figure it out.</p>
+
+  <h3>3. Each Wave Expands the Blast Radius</h3>
+  <ul>
+    <li>First wave: Enterprise-internal; ordinary people felt nothing.</li>
+    <li>Second wave: Entered consumer internet; people started noticing.</li>
+    <li>Third wave: Penetrates daily life, fundamentally transforming work and creation.</li>
+  </ul>
+
+  <h3>4. Infrastructure Maturity Is the Hidden Catalyst</h3>
+  <p>The first wave was constrained by hardware, the second benefited from the internet and data, and the third is powered by GPUs and large-scale distributed training. <strong>Technology waves don't arrive because of a single genius's flash of insight — they arrive because infrastructure accumulates to a tipping point.</strong></p>
+
+  <hr>
+
+  <h2>Where Do We Stand Now?</h2>
+  <p>If the first wave was "AI learned rules," and the second was "AI learned patterns," then the essence of the third wave is: <strong>AI learned a universal representation of language and knowledge.</strong></p>
+  <p>We're far from done. Large model capabilities are still improving rapidly, and new directions — Agents, world models, embodied intelligence — are just sprouting.</p>
+  <p>Understanding history isn't about predicting the future — no one can do that accurately. It's about being able to distinguish real trends from hype when the next wave hits.</p>
+  <p><strong>After all, AI's history tells us: true technological revolutions never happen overnight. They erupt after countless failures, winters, and sheer persistence.</strong></p>
+
+  <div class="footer-note">~3,800 words · 12 min read</div>
+  <a href="./" class="back-link">← All Articles</a>
+</article>
+</body>
+</html>

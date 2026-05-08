@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Principles of AI Startups: Finding Real Pain Points – AI Insights</title>
+<meta name="description" content="How to use first principles thinking to identify genuine pain points for AI startups, avoid common traps, and build products people actually need.">
+<link rel="canonical" href="https://jianan-peng.github.io/articles/06-first-principles-of-ai-startup.html">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .nav {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .nav a:hover { text-decoration: underline; }
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  article h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: .85rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  article h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+  }
+  article h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 .75rem;
+  }
+  article p {
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  article ul, article ol {
+    margin: 0 0 1.2rem 1.5rem;
+    color: var(--text);
+  }
+  article li { margin-bottom: .5rem; }
+  article strong { color: #fff; }
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .5rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--card);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-dim);
+  }
+  article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  article th, article td {
+    padding: .75rem 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  article th {
+    background: var(--card);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: .85rem;
+    font-style: italic;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Back to AI Tools</a> · <a href="./">All Articles</a>
+</div>
+<article>
+  <h1>First Principles of AI Startups: Finding Real Pain Points</h1>
+  <div class="meta">~12 min read</div>
+
+  <h2>"AI" Isn't the Answer — the Problem Is</h2>
+
+  <p>In 2023, I attended an AI startup pitch event. Out of 12 projects, 8 opened with something like this:</p>
+
+  <blockquote>"We used a large language model to build a…"</blockquote>
+
+  <p>And then? Nothing.</p>
+
+  <p>An investor asked: "Why do users need this?" The founder replied: "Because it's powered by AI."</p>
+
+  <p>This isn't a joke — it's the real state of the industry. Too many founders fall into the trap of <strong>holding a hammer and searching for nails</strong>. They have GPT, Stable Diffusion, and every open-source model at their fingertips, scouring the world for "problems that AI can solve" — instead of the reverse: finding real problems first, then asking whether AI is the best solution.</p>
+
+  <p>That's the core thesis of this article: <strong>Use first principles thinking to find genuine pain points.</strong></p>
+
+  <h2>What Is First Principles Thinking?</h2>
+
+  <p>First Principles Thinking was popularized by Elon Musk, but its roots trace back to Aristotle. In simple terms, it means <strong>breaking a problem down to its most fundamental facts and assumptions, then rebuilding a solution from scratch</strong> — rather than relying on analogies or past experience.</p>
+
+  <p>Take rockets, for example. Why are they so expensive?</p>
+
+  <ul>
+    <li><strong>Analogical thinking:</strong> Rockets have always been expensive, so we can't build cheap ones either.</li>
+    <li><strong>First principles:</strong> What are rockets made of? Aluminum, carbon fiber, titanium alloys… These materials cost roughly 2% of a rocket's price tag. So what makes up the other 98%? Manufacturing processes, supply chains, R&D amortization. If we redesign the manufacturing workflow, rockets could be 100x cheaper.</li>
+  </ul>
+
+  <p>That's exactly what SpaceX did.</p>
+
+  <p>Apply this to AI startups: <strong>Don't ask "What can AI do?" — ask "What unsolved problems do users actually have?" Then dissect the essence of that problem.</strong></p>
+
+  <h2>Three Common Traps in AI Startups</h2>
+
+  <p>Before diving into methodology, let's identify the traps.</p>
+
+  <h3>Trap #1: Technology-Driven Instead of Demand-Driven</h3>
+
+  <p>"Our model ranks #1 on the XX benchmark!"</p>
+
+  <p>Congratulations — but what does that have to do with users?</p>
+
+  <p>I've seen countless teams pour 90% of their energy into model optimization, only to discover after launch that <strong>users don't care whether your accuracy is 92% or 95%</strong>. They care about: <em>Can this save me an hour of repetitive work? Can it stop me from working overtime? Can it help me earn more money?</em></p>
+
+  <p>Technology is a means, not an end. Unless your business model is selling the technology itself (like OpenAI selling APIs), tech is just one tool among many for solving problems.</p>
+
+  <h3>Trap #2: Reinventing the Wheel with AI</h3>
+
+  <p>"We built an AI-powered smart calendar management tool!"</p>
+
+  <p>Great. Users currently use Google Calendar — free, reliable, with a mature ecosystem. Where does your AI calendar excel? "It can automatically suggest optimal meeting times!"</p>
+
+  <p>Google Calendar can do that too. So what makes yours "AI"? Why should users switch?</p>
+
+  <p><strong>If an existing solution is already good enough, and the marginal improvement from AI isn't compelling enough to drive migration, that's probably not a good opportunity.</strong></p>
+
+  <h3>Trap #3: The Fake Demand Trap</h3>
+
+  <p>This one is the most insidious. Your product looks cool, the demo is stunning, users say "wow, amazing" during the trial — and then they never open it again.</p>
+
+  <p>Why? Because there's a chasm between "looks impressive" and "actually solves a problem." Users don't pay for "impressive" — they pay for "useful."</p>
+
+  <h2>How to Find Real Pain Points with First Principles</h2>
+
+  <p>Enough theory. Let's get practical.</p>
+
+  <h3>Method #1: Start from the Workflow, Not the Technology</h3>
+
+  <p>Forget AI. Pick an industry you know well and deeply observe practitioners' workflows.</p>
+
+  <p>Here's how:</p>
+
+  <ol>
+    <li><strong>Find 5–10 target users</strong> and conduct deep interviews. Don't ask "What do you think about AI?" — ask "What's the biggest pain in your daily work?" and "What tasks do you repeat every day that feel meaningless?"</li>
+    <li><strong>Map the complete workflow.</strong> From input to output, document every step.</li>
+    <li><strong>Mark the pain points.</strong> Which steps take the longest? Which are most error-prone? Which are the most frustrating?</li>
+    <li><strong>Assess AI fit.</strong> What's the essence of this pain point? Pattern matching? Information retrieval? Content generation? Decision support?</li>
+  </ol>
+
+  <p>Take the legal industry, for example. A junior lawyer spends hours each day on "contract review" — line-by-line comparison of contract clauses to identify risks. The core of this workflow? <strong>Pattern matching:</strong> comparing current clauses against a standard clause library to spot deviations.</p>
+
+  <p>This happens to be exactly what AI excels at. But note: you're not "using AI for contract review" — you're "saving lawyers 80% of their contract review time." AI is just the implementation method.</p>
+
+  <h3>Method #2: Find "Manual Workarounds" to Replace</h3>
+
+  <p>Many industries already use "dumb solutions" — massive manual labor, Excel spreadsheets, manual reviews. These "manual intelligence" patterns are precisely AI's sweet spot.</p>
+
+  <p>Why?</p>
+
+  <ol>
+    <li><strong>Demand is already validated.</strong> If someone is willing to spend human labor on it, the problem genuinely exists.</li>
+    <li><strong>Clear benchmarks exist.</strong> If a human takes one hour and AI can do it in 5 minutes, the value is obvious.</li>
+    <li><strong>User expectations are reasonable.</strong> They don't expect AI to score 100 — just faster than manual, cheaper than manual, and "good enough" accuracy.</li>
+  </ol>
+
+  <p>Case in point: e-commerce customer service. Previously reliant on armies of human agents answering repetitive questions. Smart chatbots aren't new, but LLMs made them actually useful — understanding complex refund issues, handling multi-turn conversations, explaining policies in natural language. This isn't inventing new demand; it's solving old demand with a better approach.</p>
+
+  <h3>Method #3: Find "Cognitive Overload" Scenarios</h3>
+
+  <p>Some scenarios have a problem not of "can't do it" but "too much information to process."</p>
+
+  <ul>
+    <li>Doctors reviewing hundreds of pages of medical records to extract key information</li>
+    <li>Analysts reading dozens of financial reports to spot anomalies</li>
+    <li>Operations teams scanning thousands of comments to gauge user sentiment</li>
+    <li>Developers sifting through tens of thousands of lines of code to locate a bug</li>
+  </ul>
+
+  <p>These scenarios share a common trait: <strong>the information volume far exceeds human cognitive bandwidth, but the judgment itself is a learnable pattern.</strong> AI's value here isn't "creation" — it's "compression" — distilling massive information into decision-ready summaries.</p>
+
+  <h3>Method #4: The Inversion Test — "Does It Still Work Without AI?"</h3>
+
+  <p>This is a simple self-check. If your product still has value after removing AI functionality, you've found a real need.</p>
+
+  <p>Examples:</p>
+
+  <ul>
+    <li><strong>Notion AI:</strong> Remove the AI, and Notion is still a great note-taking tool. AI is a value-add layer.</li>
+    <li><strong>GitHub Copilot:</strong> Remove the AI, and VS Code is still one of the best code editors. AI is an accelerator.</li>
+    <li><strong>Some AI portrait tool:</strong> Remove the AI… and there's nothing left. That's pure AI dependency.</li>
+  </ul>
+
+  <p>Purely AI-dependent products aren't impossible, but they carry higher risk — because your moat is entirely built on model capabilities, which are rapidly converging.</p>
+
+  <h2>Real Demand vs. Fake Demand: A Judgment Framework</h2>
+
+  <p>Here are the criteria for telling real AI demand from fake:</p>
+
+  <h3>1. Are Users Willing to Pay?</h3>
+
+  <p>The simplest, most brutal test. If users won't even try it for free, it's probably fake demand. If they'll pay but complain about the price, the demand exists but pricing or the solution needs adjustment.</p>
+
+  <h3>2. What Alternatives Exist? How Painful Are They?</h3>
+
+  <p>If users currently do it manually in Excel and spend 20 hours a month on it — that's a real pain point. If they already have a decent SaaS tool and just occasionally find it inconvenient — that's a weak pain point.</p>
+
+  <p><strong>Strong alternative = strong demand. Weak alternative = weak demand. No alternative = either a blue ocean or fake demand.</strong></p>
+
+  <h3>3. How Often Is It Used?</h3>
+
+  <p>Daily > Weekly > Monthly > Yearly. A tool used every day has far higher stickiness and willingness to pay than one used once a year.</p>
+
+  <h3>4. What's the Cost of Errors?</h3>
+
+  <p>If AI makes a low-stakes mistake (recommending a slightly off song), users can tolerate imperfection. If the stakes are high (medical misdiagnosis, flawed legal advice), users need extremely high accuracy, and the barrier to entry is much higher.</p>
+
+  <h3>5. Who's the Customer? Are the Decision-Maker and User the Same Person?</h3>
+
+  <p>This is critical in many B2B scenarios. If the user (employee) loves it but the decision-maker (boss) won't pay, it won't work. And vice versa.</p>
+
+  <h2>Case Studies: Two Stories</h2>
+
+  <h3>Case 1: Success — Jasper AI</h3>
+
+  <p>Jasper, originally called Jarvis, did something straightforward: helping marketers write copy.</p>
+
+  <p>Was the pain point real? Absolutely. Marketers write mountains of ad copy, email subject lines, and social media posts every day. The work is repetitive, time-consuming, and requires extensive A/B testing. The alternatives: write it yourself (slow) or outsource it (expensive with high communication overhead).</p>
+
+  <p>Jasper didn't make any earth-shattering technical innovation. It used GPT-3's API, combined with carefully designed prompt templates and industry-specific training data, to create a "useful AI copywriting tool."</p>
+
+  <p>Key success factors:</p>
+  <ul>
+    <li>Clear pain point (marketing copy is high-frequency, essential demand)</li>
+    <li>Measurable results (conversion rates, click-through rates)</li>
+    <li>Users willing to pay (a marketer earns thousands per month; the tool costs tens per month)</li>
+    <li>Painful alternatives (writing copy by hand is tedious drudgery)</li>
+  </ul>
+
+  <h3>Case 2: Failure — An AI Social Matching App</h3>
+
+  <p>This anonymous product used AI to analyze users' social media content and match them with "soulmates."</p>
+
+  <p>Sounds cool, right? But the problems were:</p>
+
+  <ul>
+    <li>What's the pain point in social matching? "Can't find the right person." But the root cause is narrow social circles and information asymmetry — not "lack of AI analysis."</li>
+    <li>Can AI analysis of social media represent someone's true personality? Social media profiles are carefully curated personas.</li>
+    <li>Are users willing to let AI analyze their private content? The trust barrier is enormous.</li>
+    <li>What are the alternatives? Tinder and similar apps already work well. How much marginal value does AI matching really add?</li>
+  </ul>
+
+  <p>Result: Six months after launch, daily active users dropped from 2,000 to 200.</p>
+
+  <h2>A Practical Decision Framework</h2>
+
+  <p>Finally, here's a framework you can use directly. Before deciding to launch an AI startup project, ask yourself these 5 questions:</p>
+
+  <table>
+    <thead>
+      <tr><th>Dimension</th><th>Question</th><th>Good Answer</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pain Intensity</td><td>How do users solve this now? How painful is it?</td><td>Current solutions are inefficient / expensive / nonexistent</td></tr>
+      <tr><td>AI Fit</td><td>What type of AI task is this problem's essence?</td><td>Clear pattern matching / generation / retrieval task</td></tr>
+      <tr><td>Willingness to Pay</td><td>Who pays? How much?</td><td>Short decision chain, reasonable unit price</td></tr>
+      <tr><td>Competitive Landscape</td><td>Without AI, are there giants in this space?</td><td>Giants unwilling to do it / can't do it well / too slow</td></tr>
+      <tr><td>Data Flywheel</td><td>As more people use it, does the product get better?</td><td>Can form a positive data feedback loop</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>All 5 questions answered "Good" → Worth deep investigation</strong><br>
+  <strong>3–4 "Good" → Evaluate cautiously, need more validation</strong><br>
+  <strong>1–2 "Good" → Probably fake demand, rethink your direction</strong></p>
+
+  <h2>Conclusion</h2>
+
+  <p>The first principles of AI startup success come down to one sentence:</p>
+
+  <p><strong>Forget AI first. Find the real pain point. Then ask: is AI the best way to solve it?</strong></p>
+
+  <p>If the answer is "yes," congratulations — you've found a good opportunity.<br>
+  If the answer is "no" or "I'm not sure," don't force-fit AI. Maybe a simple automation script, an Excel template, or even a phone call could solve the problem.</p>
+
+  <p>The best AI products are often ones where users don't feel the AI's presence. Because what they care about isn't "wow, this uses AI" — it's "wow, this saved me 10 hours."</p>
+
+  <p>Find that "save 10 hours" scenario, and you've found the real pain point.</p>
+
+  <div class="footer-note">~3,800 words · ~12 min read</div>
+  <a href="./" class="back-link">← All Articles</a>
+</article>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post-Mortem: Why AI Startups Die – AI Insights</title>
+<meta name="description" content="An honest post-mortem of AI startup failures — from Jibo and Anki to Element AI and ScaleFactor. What went wrong, and what founders can learn from their mistakes.">
+<link rel="canonical" href="https://jianan-peng.github.io/articles/18-why-ai-startups-die.html">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .nav {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .nav a:hover { text-decoration: underline; }
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  article h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: .85rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  article h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+  }
+  article h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 .75rem;
+  }
+  article p {
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  article ul, article ol {
+    margin: 0 0 1.2rem 1.5rem;
+    color: var(--text);
+  }
+  article li { margin-bottom: .5rem; }
+  article strong { color: #fff; }
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .5rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--card);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-dim);
+  }
+  article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  article th, article td {
+    padding: .75rem 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  article th {
+    background: var(--card);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: .85rem;
+    font-style: italic;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Back to AI Tools</a> · <a href="./">All Articles</a>
+</div>
+<article>
+  <h1>Post-Mortem: Why AI Startups Die</h1>
+  <div class="meta">~14 min read</div>
+
+  <p>There's a saying in the startup world: success stories are all alike, but failures fail in their own unique ways. In the AI startup space, though, the failure patterns are strikingly similar.</p>
+  <p>Today we're not talking about who raised how much or who released what model. We're talking about the AI companies that <em>died</em> — what they got wrong, and what we can learn from them.</p>
+
+  <h2>1. Jibo: The Beautiful Illusion of Social Robots</h2>
+  <p>Jibo was once a Kickstarter darling, billed as "the first family social robot." It had a cute round head that could turn to look at you, chat, and dance. When it launched in 2017 at $899, the media raved.</p>
+  <p><strong>What happened?</strong> The company shut down in 2019. Its core technology and patents were acquired.</p>
+  <p><strong>Autopsy:</strong></p>
+  <ul>
+    <li><strong>Overpromised on tech</strong>: Jibo's demos far exceeded what the actual product could deliver. Users expected Jarvis from Iron Man; they got a speaker that could turn its head.</li>
+    <li><strong>Price-value mismatch</strong>: Paying $899 for a robot that did less than an Alexa — users lost interest fast.</li>
+    <li><strong>The brutal reality of hardware</strong>: Molds, supply chains, inventory — everything burns cash. Jibo raised over $70M, but hardware holes run far deeper than software ones.</li>
+  </ul>
+  <p><strong>Lesson:</strong> If your AI product needs hardware to work, ask yourself one question first — does the core value still hold without the hardware? If not, you may be creating unnecessary difficulty.</p>
+
+  <h2>2. Anki: The Elegy of Robot Toys</h2>
+  <p>Anki made AI-powered toy robots — Cozmo and Vector — that could recognize faces, interact, and had "personality." The products were cool and sold well — over 6.5 million units shipped.</p>
+  <p><strong>Suddenly shut down in 2019.</strong> Why? They ran out of money.</p>
+  <p><strong>Autopsy:</strong></p>
+  <ul>
+    <li><strong>Revenue was fine, but margins were negative</strong>: Hardware margins were razor-thin, while AI R&D costs were massive. The more they sold, the more they lost.</li>
+    <li><strong>Funding fell through</strong>: The last round of fundraising didn't close, and cash flow was severed.</li>
+    <li><strong>Scattered product lines</strong>: From Overdrive (racing) to Cozmo to Vector — each product required massive R&D investment, but none had synergy with the others.</li>
+  </ul>
+  <p><strong>Lesson:</strong> Revenue ≠ profit. Growth ≠ health. If an AI company chooses the hardware path, it needs either extreme cost discipline or a product with enough premium to justify the margins.</p>
+
+  <h2>3. Element AI: The Fall of a Canadian AI Unicorn</h2>
+  <p>Element AI was co-founded by Yoshua Bengio, one of the "three godfathers of deep learning." Founded in 2017, it raised $102M immediately, then $150M in 2019, reaching a valuation over $1 billion.</p>
+  <p><strong>Acquired by ServiceNow in 2020 for under $500M.</strong> For investors, this was not a success.</p>
+  <p><strong>Autopsy:</strong></p>
+  <ul>
+    <li><strong>The enterprise AI deployment gap</strong>: Element AI excelled at research, but enterprise customers don't want papers — they want deployable solutions. The gap from research to product was much wider than expected.</li>
+    <li><strong>Talent drain</strong>: Top AI researchers preferred Google and Meta for the higher salaries and publication opportunities. A startup's pull was limited.</li>
+    <li><strong>Fuzzy business model</strong>: Were they doing AI consulting? An AI platform? Vertical industry solutions? Element AI never figured it out.</li>
+  </ul>
+  <p><strong>Lesson:</strong> Technical prowess ≠ commercial success. AI startups must figure out "how to make money" early on — not just "how to build the best model."</p>
+
+  <h2>4. AIBrain: The Company That Was "About to Break Through" Forever</h2>
+  <p>AIBrain was founded in 2012, working on artificial general intelligence (AGI). Yes, people were building AGI before the large model era.</p>
+  <p><strong>Result:</strong> Burned through over a decade of funding with almost nothing to show for it — no impactful products shipped.</p>
+  <p><strong>Autopsy:</strong></p>
+  <ul>
+    <li><strong>Goals too grand</strong>: Pursuing AGI isn't the problem; the problem is what business model sustains you until you get there. AIBrain never found a way to monetize along the way.</li>
+    <li><strong>Wrong timing</strong>: Building AGI when compute, data, and algorithms were all immature is like selling cars where there are no roads.</li>
+    <li><strong>Lack of focus</strong>: Simultaneously working on game AI, educational robots, enterprise services — each half-baked.</li>
+  </ul>
+  <p><strong>Lesson:</strong> Between grand ambition and commercial reality, you need a bridge. That bridge is called a "milestone product." Without it, you're running naked at the edge of a cliff.</p>
+
+  <h2>5. ScaleFactor: The Fake AI Accounting Boom</h2>
+  <p>ScaleFactor claimed to use AI to automate bookkeeping and financial analysis for SMBs. It raised $100M in 2019 from top-tier investors including Bessemer Venture Partners.</p>
+  <p><strong>Suddenly laid off staff and sold assets in 2020.</strong> The embarrassing truth: much of the so-called "AI automation" was actually humans manually processing things in the back office.</p>
+  <p><strong>Autopsy:</strong></p>
+  <ul>
+    <li><strong>Fake AI product</strong>: This is perhaps the most classic AI startup death — you think you're building AI, but you're really running a services shop. When labor costs exceed revenue, the model collapses.</li>
+    <li><strong>Growth subsidized by discounts</strong>: To juice customer numbers, they slashed prices, losing money on every transaction.</li>
+    <li><strong>Trust collapse</strong>: When customers discovered the "AI" was actually humans, brand credibility evaporated overnight.</li>
+  </ul>
+  <p><strong>Lesson:</strong> If your "AI" still relies heavily on manual labor, be honest with yourself. "AI-assisted human work" is a perfectly viable business model — just don't pretend it's "fully automated AI."</p>
+
+  <h2>6. Viv Labs: Siri Creator's Second Act</h2>
+  <p>Viv was founded by Siri co-creator Dag Kittlaus, promising to be the "next-generation intelligent assistant" — more powerful and more open than Siri. The demo was genuinely impressive — handling complex, multi-step requests.</p>
+  <p><strong>Acquired by Samsung in 2016, then essentially vanished.</strong> Viv's technology was integrated into Bixby, and Bixby... well, everyone knows how that went.</p>
+  <p><strong>Autopsy:</strong></p>
+  <ul>
+    <li><strong>The demo-to-product gap</strong>: The complex conversational abilities shown in demos saw massive accuracy drops in real-world scenarios.</li>
+    <li><strong>Platform dependency risk</strong>: After being acquired by Samsung, it became an internal big-corp project, losing the agility and speed of a startup.</li>
+    <li><strong>Competitors too strong</strong>: Alexa and Google Assistant had already locked up the ecosystem, and Viv's differentiation wasn't compelling enough.</li>
+  </ul>
+  <p><strong>Lesson:</strong> Demo ≠ product. If your core capability only shines in carefully curated scenarios, it might be worthless in the real world.</p>
+
+  <h2>7. How Chinese AI Companies Die</h2>
+  <p>China has its own collection of AI startup failures, but the patterns are somewhat different:</p>
+  <p><strong>The "AI Four Dragons" dilemma:</strong> SenseTime, Megvii, CloudWalk, and Yitu were once called China's "AI Four Dragons." Though they all went public (or tried to), they've broadly faced losses, slowing growth, and massive valuation deflation.</p>
+  <p><strong>Common problems:</strong></p>
+  <ul>
+    <li><strong>Government dependency (To-G)</strong>: Heavy reliance on government surveillance contracts, with a clear growth ceiling.</li>
+    <li><strong>Homogeneous competition</strong>: The computer vision space was too crowded, with price wars driving margins to near zero.</li>
+    <li><strong>Hard to pivot from vision to general AI</strong>: Expanding from a single CV capability to a broader AI platform proved much harder than expected.</li>
+  </ul>
+  <p><strong>Other typical Chinese AI startup deaths:</strong></p>
+  <ul>
+    <li><strong>Policy shifts</strong>: Education crackdowns ("double reduction"), fintech regulations — these directly killed batches of AI+education and AI+fintech companies.</li>
+    <li><strong>Big tech steamrolling</strong>: Once Baidu, Alibaba, or Tencent enters your space with free offerings and ecosystem advantages, small companies struggle to survive.</li>
+  </ul>
+
+  <h2>8. The Seven Common Causes of AI Startup Death</h2>
+  <p>Distilling the above cases, here are the most common causes:</p>
+
+  <h3>1. Overpromising on Technology</h3>
+  <p>Demos are flashy, products are fragile. AI's uncertainty is far greater than traditional software — a model that performs well on test sets doesn't mean it works in the real world.</p>
+
+  <h3>2. Unclear Business Model</h3>
+  <p>"We'll figure out monetization later" — this sentence has killed more AI companies than any competitor.</p>
+
+  <h3>3. Burning Cash Too Fast</h3>
+  <p>AI has a unique cost structure: expensive compute, expensive talent, expensive data. Without a path to positive cash flow, running out of funding means death.</p>
+
+  <h3>4. Bad Timing</h3>
+  <p>Too early and the market isn't ready; too late and the giants have already arrived. The timing window for AI startups is narrower than in other sectors.</p>
+
+  <h3>5. Fake AI</h3>
+  <p>Relying heavily on manual labor or rule engines disguised as AI. It can fool people in the short term, but the truth always comes out.</p>
+
+  <h3>6. Ignoring Commercialization</h3>
+  <p>Piles of papers published, zero products shipped. Technology must become something users will pay for — otherwise it's just intellectual masturbation.</p>
+
+  <h3>7. Team Imbalance</h3>
+  <p>Pure tech teams don't understand business; pure business teams don't understand AI's limitations. Cognitive gaps between founders lead to bad decisions.</p>
+
+  <h2>9. How to Avoid Being the Next Failure</h2>
+  <p>Practical advice for AI founders:</p>
+  <p><strong>1. Validate before scaling</strong></p>
+  <p>Don't hire 50 people on day one. Use the smallest team possible to validate core assumptions. Confirm product-market fit before accelerating.</p>
+  <p><strong>2. Be honest about your AI capabilities</strong></p>
+  <p>If you still rely heavily on humans, don't package it as fully automated. "AI + human" is a perfectly viable model — just be transparent about it.</p>
+  <p><strong>3. Keep hardware ambitions in check</strong></p>
+  <p>Unless you have deep pockets and strong supply chain capabilities, default to pure software solutions.</p>
+  <p><strong>4. Find a path to early revenue</strong></p>
+  <p>Grand visions are fine, but you need a revenue stream to sustain you on the journey.</p>
+  <p><strong>5. Speed beats perfection</strong></p>
+  <p>AI moves too fast. By the time you build the "perfect product," the market may have shifted. Iterate fast, fail fast.</p>
+  <p><strong>6. Don't fight the giants head-on</strong></p>
+  <p>If Google or Baidu is already doing what you're doing, you'll probably lose. Find a differentiated angle.</p>
+
+  <h2>Conclusion</h2>
+  <p>The death rate for AI startups may be even higher than for regular startups, because this space has too many temptations: cool tech, easy funding, market hype. But these "good vibes" often mask the most fundamental business question — <strong>for whom are you solving what problem, and how much will they pay for it?</strong></p>
+  <p>Remember: <strong>technology is the means; business is the end.</strong> The companies that survive aren't necessarily the most technically advanced — they're the ones that best understand their users.</p>
+
+  <div class="footer-note">~4,200 words · ~14 min read</div>
+  <a href="./" class="back-link">← All Articles</a>
+</article>
+</body>
+</html>

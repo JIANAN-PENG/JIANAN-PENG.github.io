@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond Large Models: The Next Paradigm Shift in AI – AI Insights</title>
+<meta name="description" content="LLMs are hitting diminishing returns. What comes next? Exploring world models, embodied intelligence, multimodal fusion, small model resurgence, and reasoning engines.">
+<link rel="canonical" href="https://jianan-peng.github.io/articles/02-beyond-large-models.html">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .nav {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .nav a:hover { text-decoration: underline; }
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  article h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: .85rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  article h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+  }
+  article h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 .75rem;
+  }
+  article p {
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  article ul, article ol {
+    margin: 0 0 1.2rem 1.5rem;
+    color: var(--text);
+  }
+  article li { margin-bottom: .5rem; }
+  article strong { color: #fff; }
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .5rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--card);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-dim);
+  }
+  article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  article th, article td {
+    padding: .75rem 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  article th {
+    background: var(--card);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: .85rem;
+    font-style: italic;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Back to AI Tools</a> · <a href="./">All Articles</a>
+</div>
+<article>
+  <h1>Beyond Large Models: The Next Paradigm Shift in AI</h1>
+  <div class="meta">~3,500 words · 11 min read</div>
+
+  <h2>Introduction: How Far Have Large Models Actually Come?</h2>
+  <p>As of 2025, large language models are astonishingly capable: they write code, draft papers, translate languages, serve as customer support agents, and even help with investment analysis. GPT-4, Claude, Gemini, DeepSeek — each new model is smarter than the last, each benchmark score higher than the previous.</p>
+  <p>But look closely and you'll notice something subtle: <strong>the capability growth of LLMs is shifting from exponential to logarithmic.</strong></p>
+  <p>Early on, the jumps from GPT-2 to GPT-3, and GPT-3 to GPT-4, were qualitative leaps. Now, new models feel more like incremental refinements than paradigm shifts. Parameters grow from hundreds of billions to trillions, training data from terabytes to petabytes, costs from tens of millions to hundreds of millions of dollars — inputs are growing exponentially, but the capability gains are narrowing.</p>
+  <p>What does this mean? <strong>The LLM road hasn't hit a dead end, but its marginal returns are diminishing.</strong> AI's next major breakthrough probably won't come from "making LLMs bigger" — it'll come from an entirely different direction.</p>
+  <p>In this article, we'll explore the possible paradigm shifts that lie beyond large models.</p>
+
+  <hr>
+
+  <h2>Direction 1: World Models — From "Reading About the World" to "Understanding the World"</h2>
+
+  <h3>The Fundamental Flaw of LLMs</h3>
+  <p>A large language model is essentially a "next-word prediction machine." It has read nearly all text on the internet and learned to predict the next token given the preceding context. Impressive, yes — but it has a fundamental flaw: <strong>it doesn't understand the physical world.</strong></p>
+  <p>Ask ChatGPT: "If I turn a full glass of water upside down, what happens?" It correctly answers "the water spills out." But that answer isn't grounded in an understanding of gravity and fluid dynamics — it's because the model has seen similar descriptions in its training data.</p>
+  <p>This is the so-called "parrot problem": the model can say the right thing without truly understanding it.</p>
+
+  <h3>What Are World Models?</h3>
+  <p>World models aim to <strong>let AI build an internal model of how the world works — physical laws, causal relationships, spatial structure, temporal evolution.</strong></p>
+  <p>The concept traces back to Jürgen Schmidhuber's work in 1995, but it has gained renewed attention thanks to breakthroughs in video generation.</p>
+  <p>The most prominent example is <strong>Sora</strong>. OpenAI's Sora, released in 2024, generates photorealistic videos up to 60 seconds long. OpenAI claims Sora isn't just a "video generator" but a "world simulator" — in learning to generate video, it implicitly learns the laws of the physical world.</p>
+  <p>While this claim is debated (Sora's videos frequently violate physics), the direction is right: <strong>if AI can simulate the world, it can truly understand it.</strong></p>
+
+  <h3>Technical Paths for World Models</h3>
+  <p>Several paths are being explored:</p>
+  <ol>
+    <li><strong>Video prediction models</strong>: Like Sora, learning world models by predicting the next video frame. Key players: OpenAI, Runway, Stability AI.</li>
+    <li><strong>NeRF and 3D Gaussian Splatting</strong>: Reconstructing 3D scenes from 2D images, helping AI understand spatial structure. Notable work: Google's DreamFusion, NVIDIA's Magic3D.</li>
+    <li><strong>Physics engines + learning</strong>: Combining known physics engines (MuJoCo, Isaac Gym) with neural networks so AI has physical priors while still learning from data. Key players: DeepMind, NVIDIA.</li>
+    <li><strong>Causal reasoning</strong>: Teaching AI to distinguish "correlation" from "causation." This is the focus of Yoshua Bengio (Turing Award laureate) in recent years.</li>
+  </ol>
+
+  <h3>Opportunities for Builders</h3>
+  <ul>
+    <li><strong>Gaming & virtual worlds</strong>: World models let NPCs genuinely understand game-world physics, producing more natural behavior.</li>
+    <li><strong>Robot training</strong>: Train robots in virtual worlds, then transfer skills to the real world (Sim2Real).</li>
+    <li><strong>Autonomous driving simulation</strong>: Generate infinite driving scenarios with world models — safer and more efficient than real-world road testing.</li>
+    <li><strong>Scientific simulation</strong>: Climate prediction, molecular dynamics, materials design — world models can accelerate scientific computation.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Direction 2: Embodied Intelligence — Give AI a Body</h2>
+
+  <h3>Why Does AI Need a Body?</h3>
+  <p>Large models "live inside screens." They process text and images, but they can't open a fridge, fold laundry, or act in the physical world.</p>
+  <p><strong>Embodied Intelligence</strong> aims to <strong>give AI a physical body that can perceive, decide, and act in the real world.</strong></p>
+  <p>This isn't as simple as "strapping wheels onto ChatGPT." It involves an entire tech stack — perception, planning, control, safety — and is widely recognized as AI's next grand challenge.</p>
+
+  <h3>Why Now?</h3>
+  <p>The concept isn't new, but it never worked well before. The reason: robots weren't smart enough. Traditional robots relied on pre-programming — you had to specify exact parameters for every action.</p>
+  <p>Large models changed everything. Now robots can:</p>
+  <ul>
+    <li><strong>Understand tasks in natural language</strong>: "Put the apple on the table into the fridge" — no code required, just plain speech.</li>
+    <li><strong>Use vision to understand environments</strong>: Multimodal models can "read" scenes, identify objects, and understand spatial relationships.</li>
+    <li><strong>Autonomously plan actions</strong>: LLMs can decompose complex tasks into sub-steps and execute them sequentially.</li>
+  </ul>
+  <p>2024–2025 saw an explosion in embodied intelligence:</p>
+  <ul>
+    <li><strong>Figure AI</strong>: Raised over $700M, partnered with OpenAI, developing general-purpose humanoid robots.</li>
+    <li><strong>1X Technologies</strong>: Norwegian company behind the NEO Beta humanoid.</li>
+    <li><strong>Tesla Optimus</strong>: Musk's bet on humanoid robots for factories and homes.</li>
+    <li><strong>Unitree</strong>: Chinese company with both quadruped and humanoid robot products.</li>
+    <li><strong>Agibot</strong>: Chinese company focused on general-purpose embodied intelligence.</li>
+  </ul>
+
+  <h3>Core Technical Challenges</h3>
+  <ol>
+    <li><strong>Sim-to-Real gap</strong>: No matter how well you train in simulation, the real world always throws surprises.</li>
+    <li><strong>Safety</strong>: When a robot acts in the physical world, errors can cause real harm — a completely different magnitude than text "hallucinations."</li>
+    <li><strong>Hardware cost</strong>: High-performance robots remain prohibitively expensive for mass adoption in the short term.</li>
+    <li><strong>Data scarcity</strong>: Unlike internet text, high-quality robot manipulation data is extremely scarce.</li>
+  </ol>
+
+  <h3>Opportunities for Builders</h3>
+  <ul>
+    <li><strong>Vertical-scenario robots</strong>: Forget general humanoids — build robots for specific scenarios (warehousing, cleaning, nursing, agriculture).</li>
+    <li><strong>Robot data collection & labeling</strong>: An infrastructure-level need that's severely undersupplied.</li>
+    <li><strong>Simulation platforms</strong>: High-fidelity virtual environments for robot training.</li>
+    <li><strong>Robot OS & middleware</strong>: Think ROS2, but optimized for LLM-driven robots.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Direction 3: Multimodal Fusion — AI's Five Senses</h2>
+
+  <h3>From Single Modality to Multimodal</h3>
+  <p>Humans don't perceive the world through eyes alone (text) or ears alone (sound). We use vision, hearing, touch, smell, and taste in concert — only then do we truly understand the world.</p>
+  <p>LLMs are following the same trajectory:</p>
+  <ul>
+    <li><strong>2020–2022</strong>: Primarily text models (GPT-3, ChatGPT)</li>
+    <li><strong>2023</strong>: Text + images (GPT-4V, Gemini Pro Vision)</li>
+    <li><strong>2024</strong>: Text + images + audio + video (Gemini 1.5, GPT-4o, Claude 3.5)</li>
+    <li><strong>2025 and beyond</strong>: Deeper multimodal integration</li>
+  </ul>
+
+  <h3>Multimodal Means More Than "Can See and Hear"</h3>
+  <p>True multimodal fusion isn't just bolting extra "eyes" and "ears" onto a model. It requires solving a core problem: <strong>how do you unify representations across different modalities?</strong></p>
+  <p>The human brain doesn't process visual and auditory information in isolation — they fuse at higher cognitive levels. AI needs to do the same.</p>
+  <p>Current technical approaches include:</p>
+  <ol>
+    <li><strong>Unified tokenization</strong>: Convert images, audio, and video into token sequences, processed alongside text by Transformers. This is the most mainstream approach today.</li>
+    <li><strong>Cross-modal attention</strong>: Specialized attention mechanisms that let different modalities "see" and "influence" each other.</li>
+    <li><strong>Inter-modal alignment</strong>: Using contrastive learning (like CLIP) to align different modalities into a shared semantic space.</li>
+  </ol>
+
+  <h3>Frontier Exploration: Touch and Smell</h3>
+  <p>Vision and hearing multimodality are relatively mature, but touch and smell are still early-stage.</p>
+  <ul>
+    <li><strong>Touch</strong>: Research teams are developing tactile sensors and datasets so robots can "feel" texture, hardness, and temperature.</li>
+    <li><strong>Smell</strong>: Companies like Osmo are trying to use AI to understand and generate scents. Very early-stage but fascinating.</li>
+  </ul>
+
+  <h3>Opportunities for Builders</h3>
+  <ul>
+    <li><strong>Multimodal search</strong>: Not just text-to-image, but any-modality-to-any-modality search.</li>
+    <li><strong>Accessibility tech</strong>: Describe surroundings for the visually impaired; real-time sign language transcription for the hearing impaired.</li>
+    <li><strong>Industrial inspection</strong>: Detect product defects using vision + touch + audio in combination.</li>
+    <li><strong>Creative tools</strong>: AI simultaneously understands your sketch, voice description, and text prompt to generate exactly what you want.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Direction 4: The Small Model Comeback — Bigger Isn't Always Better</h2>
+
+  <h3>The "Big" Problem with Big Models</h3>
+  <p>Large models are powerful but expensive:</p>
+  <ul>
+    <li><strong>Training cost</strong>: GPT-4's training reportedly cost over $100 million.</li>
+    <li><strong>Inference cost</strong>: Every API call requires substantial GPU resources.</li>
+    <li><strong>Latency</strong>: Large models are slow — not ideal for real-time applications.</li>
+    <li><strong>Privacy</strong>: Data must be uploaded to the cloud — a dealbreaker for sensitive domains (healthcare, finance, legal).</li>
+    <li><strong>Deployment constraints</strong>: Requires network connectivity; useless offline.</li>
+  </ul>
+  <p>These problems have spawned a counterintuitive trend: <strong>small models are making a comeback.</strong></p>
+
+  <h3>The Rise of Small Models</h3>
+  <p>During 2023–2024, a series of "small but mighty" models proved that on specific tasks, small models can match or even beat large ones.</p>
+  <ul>
+    <li><strong>Microsoft Phi series</strong>: Phi-2 (2.7B params) outperformed models 10x its size on many benchmarks. Phi-3 pushed small-model capabilities even further.</li>
+    <li><strong>Google Gemma</strong>: 2B and 7B parameter models, top-tier in their class.</li>
+    <li><strong>Meta Llama 3.2</strong>: 1B and 3B models optimized for mobile and edge devices.</li>
+    <li><strong>Qwen 2.5 series</strong>: Alibaba's small models, excellent in Chinese-language scenarios.</li>
+    <li><strong>DeepSeek series</strong>: Heavy optimization for inference efficiency.</li>
+  </ul>
+
+  <h3>How Do Small Models Pull This Off?</h3>
+  <p>Several key technical breakthroughs:</p>
+  <ol>
+    <li><strong>Knowledge distillation</strong>: Train small models on large model outputs, transferring capabilities.</li>
+    <li><strong>Data quality > data quantity</strong>: The Phi series' secret sauce is high-quality "textbook-grade" training data, not mindless data scaling.</li>
+    <li><strong>Quantization</strong>: Compress model parameters from 32-bit floats to 4-bit or lower, drastically reducing model size and inference cost.</li>
+    <li><strong>Pruning & sparsity</strong>: Remove unimportant parameters, retaining core capabilities.</li>
+    <li><strong>LoRA & fine-tuning</strong>: Adapt to specific tasks with minimal additional parameters.</li>
+  </ol>
+
+  <h3>On-Device Deployment: The Killer Scenario</h3>
+  <p>The most exciting application of small models is <strong>on-device deployment</strong> — running AI directly on phones, PCs, cars, and IoT devices without cloud dependency.</p>
+  <p>Apple's Apple Intelligence, Qualcomm's AI Engine, and MediaTek's APU are all pushing on-device AI forward. When the AI on your phone works offline, everything changes.</p>
+
+  <h3>Opportunities for Builders</h3>
+  <ul>
+    <li><strong>Vertical small models</strong>: Train specialized small models for specific industries (legal, medical, finance) — more accurate and cheaper than general-purpose LLMs.</li>
+    <li><strong>On-device AI apps</strong>: Build offline-capable AI applications for privacy-sensitive scenarios.</li>
+    <li><strong>Model optimization services</strong>: Help enterprises compress, quantize, and deploy models to edge devices.</li>
+    <li><strong>AI-hardware co-design</strong>: Optimize model architectures for specific hardware (NPU, FPGA).</li>
+  </ul>
+
+  <hr>
+
+  <h2>Direction 5: Reasoning & Planning — From "Answering Questions" to "Solving Problems"</h2>
+
+  <h3>From System 1 to System 2</h3>
+  <p>Psychologist Daniel Kahneman divided human thinking into two modes:</p>
+  <ul>
+    <li><strong>System 1</strong> (fast thinking): Intuitive, rapid, automatic. See 2+2, instantly know it's 4.</li>
+    <li><strong>System 2</strong> (slow thinking): Deliberate, slow, effortful. Calculate 17×24, and you need to work through it step by step.</li>
+  </ul>
+  <p>Traditional LLMs are more like System 1 — they see a question and immediately produce an answer without deep reasoning. That's why they ace simple questions but frequently fail at complex reasoning (mathematical proofs, multi-step planning, logic puzzles).</p>
+  <p><strong>Reasoning models</strong> (like OpenAI's o1, DeepSeek-R1) aim to give AI System 2 capabilities — teaching it to "think before answering."</p>
+
+  <h3>The Core Idea Behind Reasoning Models</h3>
+  <p>The key techniques are <strong>Chain of Thought</strong> and <strong>Test-time Compute</strong>:</p>
+  <ul>
+    <li><strong>Chain of Thought</strong>: Have the model generate a "thinking process" before answering — just like a human writing out intermediate steps when solving a math problem.</li>
+    <li><strong>Test-time Compute</strong>: Instead of spending more resources during training, spend more during inference. Let the model "think longer" at answer time, using additional computation for better results.</li>
+  </ul>
+  <p>The idea is elegant: <strong>intelligence doesn't have to come from bigger models — it can also come from more thinking.</strong></p>
+
+  <h3>Where Reasoning Models Excel — and Where They Don't</h3>
+  <p>Reasoning models shine in:</p>
+  <ul>
+    <li>Math and programming competition problems</li>
+    <li>Complex logical reasoning</li>
+    <li>Multi-step planning</li>
+    <li>Scientific problem-solving</li>
+  </ul>
+  <p>But they have limitations:</p>
+  <ul>
+    <li>Open-ended creativity (over-reasoning can lead to "overthinking")</li>
+    <li>Real-time interaction (reasoning takes time — not suited for instant-response scenarios)</li>
+    <li>Common-sense questions (problems that don't require deep thought can be over-analyzed)</li>
+  </ul>
+
+  <h3>Opportunities for Builders</h3>
+  <ul>
+    <li><strong>AI coding assistants</strong>: Reasoning models dramatically improve code generation and debugging.</li>
+    <li><strong>Scientific research assistance</strong>: Help mathematicians, physicists, and biologists with hypothesis testing and experiment design.</li>
+    <li><strong>Complex decision systems</strong>: Business analysis, investment decisions, supply chain optimization — any scenario requiring multi-step reasoning.</li>
+    <li><strong>Education</strong>: AI doesn't just give answers; it shows the complete thought process — the ultimate teacher.</li>
+  </ul>
+
+  <hr>
+
+  <h2>The Essence of the Paradigm Shift: From "Bigger Models" to "Smarter Systems"</h2>
+  <p>Looking across these directions, a common trend emerges:</p>
+  <p><strong>AI progress is no longer solely dependent on "bigger models, more data, more compute." It now comes from architectural and methodological innovation.</strong></p>
+  <ul>
+    <li>World models: Not a larger language model, but a new architecture for understanding the physical world</li>
+    <li>Embodied intelligence: Not a smarter chatbot, but AI that can act in the real world</li>
+    <li>Multimodal fusion: Not processing each modality separately, but a unified understanding framework</li>
+    <li>Small model resurgence: Not parameter scaling, but smarter compression and distillation</li>
+    <li>Reasoning models: Not a bigger model, but more thinking time</li>
+  </ul>
+  <p><strong>What does this mean for builders?</strong></p>
+  <p>It means opportunity is no longer reserved for companies that can burn hundreds of millions training massive models. <strong>In the new paradigm, innovation can come from smaller teams, more vertical scenarios, and more clever approaches.</strong></p>
+  <p>The best startup opportunities often emerge during paradigm shifts — when old rules are broken and new ones haven't been established yet. Right now is exactly such a moment.</p>
+
+  <div class="footer-note">~3,500 words · 11 min read</div>
+  <a href="./" class="back-link">← All Articles</a>
+</article>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Insights – Articles on AI Trends &amp; Startup Strategy</title>
+<meta name="description" content="In-depth articles on AI trends, startup methodology, industry applications, and practical insights for builders in the AI era.">
+<meta name="keywords" content="AI articles, AI startup, artificial intelligence trends, AI business, machine learning, LLM, AI agents">
+<link rel="canonical" href="https://jianan-peng.github.io/articles/">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+  }
+  header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+  }
+  header p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .nav {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem 1.5rem;
+    text-align: center;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .nav a:hover { text-decoration: underline; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 1rem 4rem; }
+
+  .category { margin-bottom: 2.5rem; }
+  .category-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .category-title::before {
+    content: "";
+    width: 4px;
+    height: 1em;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .article-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all .2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .article-card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+  .article-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+  }
+  .article-card p {
+    font-size: .85rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: .75rem;
+  }
+  .article-card .meta {
+    font-size: .75rem;
+    color: var(--text-dim);
+    opacity: .7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-dim);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <h1>💡 AI Insights</h1>
+  <p>20 in-depth articles on AI trends, startup strategy, industry applications, and practical wisdom for builders in the AI era.</p>
+</header>
+<div class="nav">
+  <a href="../">← Back to AI Tools</a>
+</div>
+
+<div class="container">
+
+  <!-- AI Fundamentals & Trends -->
+  <div class="category">
+    <div class="category-title">AI Fundamentals &amp; Trends</div>
+    <div class="article-grid">
+      <a class="article-card" href="01-three-waves-of-ai.html">
+        <h3>Three Waves of AI: From Hand-Crafted Rules to Large-Scale Models</h3>
+        <p>A journey through AI's evolution — expert systems, deep learning, and the LLM revolution that changed everything.</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="02-beyond-large-models.html">
+        <h3>Beyond Large Models: The Next Paradigm Shift in AI</h3>
+        <p>Where LLMs end and the next frontier begins — world models, embodied intelligence, and the small model counter-revolution.</p>
+        <div class="meta">~12 min read</div>
+      </a>
+      <a class="article-card" href="03-ai-agents-from-tools-to-partners.html">
+        <h3>AI Agents: The Evolution from Tools to Partners</h3>
+        <p>What makes an Agent different from a chatbot? Planning, memory, tool use, and why Agents are the ultimate form of AI applications.</p>
+        <div class="meta">~12 min read</div>
+      </a>
+      <a class="article-card" href="04-open-vs-closed-source-ai.html">
+        <h3>Open Source vs Closed Source AI: Who Will Win?</h3>
+        <p>OpenAI and Anthropic vs Meta and Mistral — the battle shaping AI's future and what it means for your startup.</p>
+        <div class="meta">~11 min read</div>
+      </a>
+      <a class="article-card" href="05-ai-hardware-on-device-intelligence.html">
+        <h3>AI Meets Hardware: The Rise of On-Device Intelligence</h3>
+        <p>Why AI is moving to the edge — phones, PCs, robots, and the chip race reshaping the industry.</p>
+        <div class="meta">~12 min read</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- AI Startup Methodology -->
+  <div class="category">
+    <div class="category-title">AI Startup Methodology</div>
+    <div class="article-grid">
+      <a class="article-card" href="06-first-principles-of-ai-startup.html">
+        <h3>First Principles of AI Startups: Finding Real Pain Points</h3>
+        <p>Stop looking for problems to solve with AI. Find real problems first — then decide if AI is the right tool.</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="07-ai-business-models-api-saas-vertical-integration.html">
+        <h3>AI Business Models: APIs, SaaS, or Vertical Integration?</h3>
+        <p>A practical breakdown of how AI companies actually make money — and how to choose the right model for your venture.</p>
+        <div class="meta">~14 min read</div>
+      </a>
+      <a class="article-card" href="08-moat-reconstruction-ai-competitive-advantages.html">
+        <h3>Moats Rebuilt: How AI Companies Build Competitive Advantages</h3>
+        <p>Network effects and data flywheels still matter — but AI startups need new kinds of defensibility.</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="09-building-an-ai-startup-team.html">
+        <h3>Building an AI Startup Team: Who Do You Actually Need?</h3>
+        <p>Technical founders, AI product managers, and data teams — the roles that make or break an AI company.</p>
+        <div class="meta">~14 min read</div>
+      </a>
+      <a class="article-card" href="10-from-zero-to-one-ai-product-pmf.html">
+        <h3>From Zero to One: The AI Product PMF Playbook</h3>
+        <p>Product-Market Fit is hard for any startup. For AI products, it's uniquely challenging — here's how to navigate it.</p>
+        <div class="meta">~14 min read</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- AI Industry Applications -->
+  <div class="category">
+    <div class="category-title">AI Industry Applications</div>
+    <div class="article-grid">
+      <a class="article-card" href="11-ai-in-education.html">
+        <h3>AI in Education: The Endgame of Personalized Learning</h3>
+        <p>From Duolingo to Khan Academy — how AI is reshaping education and where the next opportunities lie.</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="12-ai-in-healthcare.html">
+        <h3>AI in Healthcare: Diagnostic Revolution Meets Ethical Boundaries</h3>
+        <p>AI can read scans better than doctors — but can it navigate the regulatory, privacy, and ethical minefields?</p>
+        <div class="meta">~14 min read</div>
+      </a>
+      <a class="article-card" href="13-ai-in-finance.html">
+        <h3>AI in Finance: Risk, Quant Trading, and Robo-Advisors</h3>
+        <p>How AI is transforming fraud detection, algorithmic trading, and personal finance management.</p>
+        <div class="meta">~14 min read</div>
+      </a>
+      <a class="article-card" href="14-ai-in-programming.html">
+        <h3>AI in Programming: The Golden Age of Developer Tools</h3>
+        <p>From Copilot to Cursor to Devin — AI is rewriting how software gets built. Here's what's coming next.</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="15-ai-in-content-creation.html">
+        <h3>AI in Content Creation: Reshaping the Creative Industries</h3>
+        <p>Text, images, video, music — AI is touching every creative medium. How do creators adapt and thrive?</p>
+        <div class="meta">~14 min read</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- AI Startup Practice & Reflection -->
+  <div class="category">
+    <div class="category-title">AI Startup Practice &amp; Reflection</div>
+    <div class="article-grid">
+      <a class="article-card" href="16-day-in-the-life-of-ai-founder.html">
+        <h3>A Day in the Life of an AI Founder: Time &amp; Energy Management</h3>
+        <p>When tech changes weekly and pivots are constant — how do you manage your time, energy, and decision-making?</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="17-ai-startup-fundraising-playbook.html">
+        <h3>The AI Startup Fundraising Playbook</h3>
+        <p>Valuation logic, investor expectations, pitch strategies, and the capital landscape for AI companies at every stage.</p>
+        <div class="meta">~14 min read</div>
+      </a>
+      <a class="article-card" href="18-why-ai-startups-die.html">
+        <h3>Post-Mortem: Why AI Startups Die</h3>
+        <p>Lessons from Jibo, Anki, Element AI, and more — the seven deadly patterns that kill AI companies.</p>
+        <div class="meta">~14 min read</div>
+      </a>
+      <a class="article-card" href="19-ai-startups-in-china.html">
+        <h3>AI Startups in China: Opportunities Amid Challenges</h3>
+        <p>Data advantages, big tech competition, regulatory landscape, and the unique playbook for building AI companies in China.</p>
+        <div class="meta">~13 min read</div>
+      </a>
+      <a class="article-card" href="20-ai-startup-endgame-2030.html">
+        <h3>AI Startup Endgame: Thinking Toward 2030</h3>
+        <p>A forward-looking framework for long-term thinking — which industries will be reshaped and where to plant your flag.</p>
+        <div class="meta">~15 min read</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Part of <a href="https://jianan-peng.github.io">jianan-peng.github.io</a> · AI Tools &amp; Insights</p>
+</footer>
+</body>
+</html>

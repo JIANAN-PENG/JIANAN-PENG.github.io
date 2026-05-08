@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Business Models: APIs, SaaS, or Vertical Integration? – AI Insights</title>
+<meta name="description" content="A deep dive into the four dominant AI business models — API, SaaS, vertical integration, and AI-native — with frameworks for choosing the right one.">
+<link rel="canonical" href="https://jianan-peng.github.io/articles/07-ai-business-models-api-saas-vertical-integration.html">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a24;
+    --card-hover: #22223a;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --text: #e2e2e8;
+    --text-dim: #8888a0;
+    --border: #2a2a3c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .nav {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 0;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .nav a:hover { text-decoration: underline; }
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  article h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: .85rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  article h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+  }
+  article h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 .75rem;
+  }
+  article p {
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  article ul, article ol {
+    margin: 0 0 1.2rem 1.5rem;
+    color: var(--text);
+  }
+  article li { margin-bottom: .5rem; }
+  article strong { color: #fff; }
+  article blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .5rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--card);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-dim);
+  }
+  article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  article th, article td {
+    padding: .75rem 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  article th {
+    background: var(--card);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: .85rem;
+    font-style: italic;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: .9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../">← Back to AI Tools</a> · <a href="./">All Articles</a>
+</div>
+<article>
+  <h1>How Does Your AI Company Actually Make Money?</h1>
+  <div class="meta">~13 min read</div>
+
+  <h2>A Soul-Searching Question: How Does Your AI Company Make Money?</h2>
+
+  <p>In 2024, a friend vented to me: "I raised 20 million, user growth is solid, but I have no idea how to make money."</p>
+
+  <p>His product was an AI writing assistant for long-form content. Daily active users in the tens of thousands, but everyone used the free tier. Paid conversion was under 2%. He'd tried subscriptions, per-use billing, advertising — none worked.</p>
+
+  <p>This isn't an isolated case. Many AI founders share the same confusion: <strong>great tech, decent product, but the business model doesn't work.</strong></p>
+
+  <p>Why? Because AI-era business models are fundamentally different from traditional internet companies. Cost structures differ. Competitive dynamics differ. User expectations differ. Copy-pasting internet playbooks will almost certainly lead you into a ditch.</p>
+
+  <p>Today, let's break down the four most common AI business models to help you find the one that fits.</p>
+
+  <h2>The Four AI Business Models: A Panoramic View</h2>
+
+  <h3>Model 1: Selling APIs — "AI Utilities"</h3>
+
+  <p><strong>Essence:</strong> Package model capabilities into API endpoints and charge per usage. Like selling electricity — you don't need to build your own power plant; just plug in and go.</p>
+
+  <p><strong>Representative companies:</strong> OpenAI (GPT API), Anthropic (Claude API), Google Cloud AI, Baidu Ernie Bot API</p>
+
+  <p><strong>Revenue model:</strong> Per-token billing, per-request billing, per-compute-hour billing</p>
+
+  <p><strong>Advantages:</strong></p>
+  <ul>
+    <li><strong>Simple and transparent.</strong> Pricing is clear; users understand it easily.</li>
+    <li><strong>Massive scaling potential.</strong> Once the API is stable, marginal costs are low.</li>
+    <li><strong>Ecosystem effects.</strong> Developers build applications on your API, creating ecosystem lock-in.</li>
+    <li><strong>Predictable cash flow.</strong> Large clients sign long-term contracts; revenue is stable.</li>
+  </ul>
+
+  <p><strong>Disadvantages:</strong></p>
+  <ul>
+    <li><strong>Price wars are inevitable.</strong> Open-source models keep improving, big tech keeps cutting prices, and margins get compressed.</li>
+    <li><strong>Weak customer stickiness.</strong> APIs are standardized products; switching providers isn't costly for users.</li>
+    <li><strong>Requires continuous R&D investment.</strong> If your model isn't leading, nobody uses your API. This is an arms race that never ends.</li>
+    <li><strong>Margin pressure.</strong> Inference costs are high, especially for large models — gross margins may only be 30–50%.</li>
+  </ul>
+
+  <p><strong>Who it's for:</strong></p>
+  <ul>
+    <li>Companies with strong model R&D capabilities</li>
+    <li>Teams with deep pockets to sustain long-term R&D</li>
+    <li>Founders aiming to build platform-level companies</li>
+  </ul>
+
+  <p><strong>Key success factor:</strong> Model capabilities must stay continuously ahead, or have a clear advantage in a specific domain.</p>
+
+  <h3>Model 2: SaaS Platform — "The AI Toolbox"</h3>
+
+  <p><strong>Essence:</strong> Build a complete SaaS product on top of model capabilities, charging subscription fees. Users don't need to know what model powers the backend — they just use your product to solve problems.</p>
+
+  <p><strong>Representative companies:</strong> Jasper (AI copywriting), Notion AI (AI notes), Cursor (AI coding), Midjourney (AI art)</p>
+
+  <p><strong>Revenue model:</strong> Monthly/annual subscriptions, per-seat pricing, tiered pricing (free/pro/enterprise)</p>
+
+  <p><strong>Advantages:</strong></p>
+  <ul>
+    <li><strong>Higher margins.</strong> SaaS gross margins typically range from 70–85%, far above pure API plays.</li>
+    <li><strong>Stronger customer stickiness.</strong> Users accumulate data, workflows, and habits in your product — migration costs are high.</li>
+    <li><strong>Brand premium potential.</strong> Users pay for "experience," not just "capability."</li>
+    <li><strong>Easier to build moats.</strong> Product experience, workflow integration, and data accumulation all create barriers.</li>
+  </ul>
+
+  <p><strong>Disadvantages:</strong></p>
+  <ul>
+    <li><strong>High product development complexity.</strong> Beyond the API, you need frontend, interaction design, and user operations.</li>
+    <li><strong>High customer acquisition costs.</strong> SaaS requires market education; users need to know your product exists.</li>
+    <li><strong>Intense competition.</strong> The barrier to entry is relatively low; copycats are common. "I can build that too" is the norm.</li>
+    <li><strong>Requires deep industry understanding.</strong> Generic SaaS rarely works; you must go deep into a specific vertical.</li>
+  </ul>
+
+  <p><strong>Who it's for:</strong></p>
+  <ul>
+    <li>Founders with industry experience (know where the pain points are)</li>
+    <li>Teams with strong product design capabilities</li>
+    <li>Companies wanting to go deep in vertical scenarios</li>
+  </ul>
+
+  <p><strong>Key success factor:</strong> The product experience must be good enough that users prefer paying for it over using a free API directly.</p>
+
+  <h3>Model 3: Vertical Industry Integration — "AI + Industry"</h3>
+
+  <p><strong>Essence:</strong> Don't just build tools — deeply embed into an industry's complete value chain. AI is the core capability, but the business model is an industry solution.</p>
+
+  <p><strong>Representative companies:</strong> Tesla (AI + automotive), Waymo (AI + mobility), Tempus (AI + healthcare), Palantir (AI + data analytics/government)</p>
+
+  <p><strong>Revenue model:</strong> Project-based fees, annual service contracts, outcome-based pricing, bundled industry solutions</p>
+
+  <p><strong>Advantages:</strong></p>
+  <ul>
+    <li><strong>Deep moats.</strong> Industry knowledge, client relationships, data accumulation, and compliance credentials are all barriers.</li>
+    <li><strong>High deal values.</strong> Enterprise clients — a single deal can be millions or even hundreds of millions.</li>
+    <li><strong>High competitive barriers.</strong> Not everyone can do this; it requires industry resources and years of accumulation.</li>
+    <li><strong>Data flywheel effect.</strong> More industry data → better models → better products → positive feedback loop.</li>
+  </ul>
+
+  <p><strong>Disadvantages:</strong></p>
+  <ul>
+    <li><strong>Long cycles.</strong> From first contact to contract to delivery to payment — it can take 1–2 years.</li>
+    <li><strong>High customization.</strong> Every client's needs are somewhat different; standardization is difficult.</li>
+    <li><strong>Demanding team requirements.</strong> You need people who understand both AI and the industry — this talent is scarce.</li>
+    <li><strong>Hard to scale.</strong> Project-based models rarely achieve exponential growth.</li>
+  </ul>
+
+  <p><strong>Who it's for:</strong></p>
+  <ul>
+    <li>Founders with industry resources and connections</li>
+    <li>Teams with deep accumulation in a specific industry</li>
+    <li>Investors willing to make long-term commitments</li>
+  </ul>
+
+  <p><strong>Key success factor:</strong> You must genuinely understand the industry — you can't just float on the surface. AI is the means; the industry solution is the product.</p>
+
+  <h3>Model 4: AI-Native Products — "Redefining a Category"</h3>
+
+  <p><strong>Essence:</strong> Don't add AI to existing products — create an entirely new product category that could only exist in the AI era.</p>
+
+  <p><strong>Representative companies:</strong> ChatGPT (AI chat assistant), Character.ai (AI roleplay), Runway (AI video generation), Perplexity (AI search engine)</p>
+
+  <p><strong>Revenue model:</strong> Subscriptions, freemium, advertising (potentially in the future), virtual goods</p>
+
+  <p><strong>Advantages:</strong></p>
+  <ul>
+    <li><strong>You define the market.</strong> As the category creator, you have first-mover advantage.</li>
+    <li><strong>Unlocks user imagination.</strong> New products can spark entirely new demand.</li>
+    <li><strong>High media attention.</strong> "The world's first XXX" naturally attracts coverage.</li>
+    <li><strong>Pricing power.</strong> With no direct competitors, pricing flexibility is wide.</li>
+  </ul>
+
+  <p><strong>Disadvantages:</strong></p>
+  <ul>
+    <li><strong>Hard to validate the market.</strong> Nobody has done this before; you don't know how big the market really is.</li>
+    <li><strong>High user education costs.</strong> Users need to learn how to use an entirely new product form.</li>
+    <li><strong>High technical risk.</strong> If model capabilities can't keep up with the product vision, the user experience suffers.</li>
+    <li><strong>Uncertain business model.</strong> The category is so new that nobody knows the optimal monetization approach.</li>
+  </ul>
+
+  <p><strong>Who it's for:</strong></p>
+  <ul>
+    <li>Founders with forward-looking vision</li>
+    <li>Technically strong teams that can iterate quickly</li>
+    <li>Teams with enough runway to survive the market validation period</li>
+  </ul>
+
+  <p><strong>Key success factor:</strong> You must have a deep understanding of AI capability boundaries, build a product that's "just usable enough," then iterate relentlessly as technology improves.</p>
+
+  <h2>Comparing the Four Models</h2>
+
+  <table>
+    <thead>
+      <tr><th>Dimension</th><th>Selling APIs</th><th>SaaS Platform</th><th>Vertical Integration</th><th>AI-Native</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Startup Capital</td><td>High (model training)</td><td>Medium</td><td>Medium-High</td><td>Medium</td></tr>
+      <tr><td>Gross Margin</td><td>30–50%</td><td>70–85%</td><td>40–70%</td><td>Uncertain</td></tr>
+      <tr><td>Moat</td><td>Model capability</td><td>Product experience + data</td><td>Industry barriers + data</td><td>First-mover + brand</td></tr>
+      <tr><td>Scaling Speed</td><td>Fast</td><td>Medium</td><td>Slow</td><td>Uncertain</td></tr>
+      <tr><td>Competition Intensity</td><td>Extreme</td><td>High</td><td>Medium</td><td>Low (initially)</td></tr>
+      <tr><td>Key Risk</td><td>Price wars</td><td>Copycats</td><td>Project-trap</td><td>Market doesn't exist</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How to Choose: A Decision Framework</h2>
+
+  <p>Choosing a business model isn't a gut decision. You need to consider these dimensions:</p>
+
+  <h3>1. What's Your Core Competency?</h3>
+  <ul>
+    <li><strong>Strong model R&D</strong> → Consider selling APIs</li>
+    <li><strong>Strong product design</strong> → Consider SaaS platform</li>
+    <li><strong>Rich industry resources</strong> → Consider vertical integration</li>
+    <li><strong>Forward-looking vision</strong> → Consider AI-Native</li>
+  </ul>
+
+  <h3>2. What's Your Financial Situation?</h3>
+  <ul>
+    <li><strong>Well-funded, can sustain long-term losses</strong> → APIs or AI-Native</li>
+    <li><strong>Limited funds, need profitability soon</strong> → SaaS or vertical integration</li>
+    <li><strong>Angel stage</strong> → Prioritize SaaS; validate the business model quickly</li>
+  </ul>
+
+  <h3>3. What's the Competitive Landscape?</h3>
+  <ul>
+    <li><strong>Giants already in the arena</strong> → Don't build generic APIs; find a vertical niche</li>
+    <li><strong>Wide open space</strong> → Consider AI-Native; define the category</li>
+    <li><strong>Red ocean market</strong> → Differentiate via SaaS or vertical integration</li>
+  </ul>
+
+  <h3>4. Who's Your Target Customer?</h3>
+  <ul>
+    <li><strong>Developers</strong> → API</li>
+    <li><strong>SMBs</strong> → SaaS</li>
+    <li><strong>Enterprises / government</strong> → Vertical integration</li>
+    <li><strong>Consumers</strong> → AI-Native or SaaS</li>
+  </ul>
+
+  <h2>Hybrid Models: The Real-World Sweet Spot</h2>
+
+  <p>In practice, successful AI companies are rarely purely one model — they're <strong>hybrids</strong>.</p>
+
+  <h3>Case: OpenAI's Model Evolution</h3>
+  <ul>
+    <li><strong>Early stage:</strong> Selling APIs (GPT-3 API)</li>
+    <li><strong>Mid stage:</strong> APIs + AI-Native product (ChatGPT)</li>
+    <li><strong>Now:</strong> APIs + ChatGPT + Enterprise SaaS + Vertical partnerships (with Microsoft, industry partners)</li>
+  </ul>
+
+  <p>OpenAI didn't confine itself to a single model. It used APIs to build a developer ecosystem, ChatGPT to capture consumer mindshare, enterprise editions to serve large clients, and partnerships to expand into verticals.</p>
+
+  <h3>Case: Notion's AI Strategy</h3>
+
+  <p>Notion is a SaaS company, but it didn't train its own LLM — it integrated OpenAI's API. For Notion, AI is a value-add layer on top of SaaS, not a standalone business model. Users pay for "a better Notion," not for "AI capabilities."</p>
+
+  <p>The benefit: <strong>You avoid the cost and risk of model R&D while capturing the product premium that AI delivers.</strong></p>
+
+  <h2>Common Pitfalls</h2>
+
+  <h3>Pitfall #1: Platform Ambitions Too Early</h3>
+
+  <p>Many founders start out wanting to "build a platform" or "create an ecosystem." But in AI, platform plays require extreme technical barriers and deep pockets. For most startups, <strong>nail a vertical SaaS first, then expand</strong> is the more pragmatic path.</p>
+
+  <h3>Pitfall #2: Ignoring Unit Economics</h3>
+
+  <p>"Our user growth is exploding!" — But what's the customer acquisition cost (CAC) per user? What's the lifetime value (LTV)? Is LTV/CAC greater than 3?</p>
+
+  <p>Many AI products boast large user bases, but with too many free users, too-low paid conversion, and too-high inference costs, the math simply doesn't work. <strong>Before chasing growth, make the unit economics work.</strong></p>
+
+  <h3>Pitfall #3: Underestimating Inference Costs</h3>
+
+  <p>This is unique to AI companies. Traditional SaaS has near-zero marginal costs — one more user means slightly more server load. But every AI user request can trigger model inference, and that cost is real.</p>
+
+  <p>If a user hits your AI product 100 times a day, consuming 1,000 tokens each time, monthly inference costs could be several dollars. If your subscription is only $9.9/month, gross margin gets eaten alive.</p>
+
+  <p><strong>Always factor inference costs into your pricing.</strong></p>
+
+  <h3>Pitfall #4: Blindly Benchmarking Against OpenAI</h3>
+
+  <p>"OpenAI does APIs, so I'll do APIs!"</p>
+
+  <p>But do you have OpenAI's model R&D capability? Their funding? Their brand influence?</p>
+
+  <p>If not, don't compete head-on with giants. Find a niche that giants are unwilling to do, can't do well, or are too slow to address — and go deep.</p>
+
+  <h2>Future Trends</h2>
+
+  <h3>Trend #1: API Prices Keep Falling; Pure API Models Face Margin Squeeze</h3>
+
+  <p>Open-source models (Llama, Mistral, Qwen, etc.) keep getting stronger, cloud providers keep cutting prices, and pure API margins will keep shrinking — unless you can maintain a sustained model capability lead.</p>
+
+  <h3>Trend #2: SaaS + AI Becomes the Norm</h3>
+
+  <p>More and more traditional SaaS products will integrate AI features. AI becomes a feature, not a standalone product. For pure AI startups, this means: your competitor might not be another AI company, but an established SaaS player that just added AI.</p>
+
+  <h3>Trend #3: Vertical Integration Rises in High-Value Industries</h3>
+
+  <p>Healthcare, legal, finance, manufacturing — these industries have high deal values, deep data moats, and strict compliance requirements. AI companies doing vertical integration here move slowly but build deep moats.</p>
+
+  <h3>Trend #4: AI-Native Categories Keep Emerging</h3>
+
+  <p>As model capabilities advance, new product forms will keep appearing. Agents, AI search, AI coding, AI video — each new category could birth a unicorn.</p>
+
+  <h2>Conclusion</h2>
+
+  <p>Business models aren't set in stone. The best AI companies often find their ideal model through continuous experimentation.</p>
+
+  <p>But some principles remain constant:</p>
+
+  <ol>
+    <li><strong>Revenue before growth.</strong> Don't burn cash until the business model works.</li>
+    <li><strong>Understand your cost structure.</strong> AI product costs are fundamentally different from traditional software.</li>
+    <li><strong>Don't choose a model just because it's "AI."</strong> The criterion is: what lets you make money fastest and most sustainably?</li>
+    <li><strong>Stay flexible.</strong> Markets change, technology changes — your business model needs to evolve too.</li>
+  </ol>
+
+  <p>One parting thought:</p>
+
+  <p><strong>The best business model isn't the coolest one — it's the one that fits you best.</strong></p>
+
+  <div class="footer-note">~4,200 words · ~13 min read</div>
+  <a href="./" class="back-link">← All Articles</a>
+</article>
+</body>
+</html>
