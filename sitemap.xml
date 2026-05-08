@@ -9,13 +9,17 @@
   <url>
     <loc>https://jianan-peng.github.io/about.html</loc>
     <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jianan-peng.github.io/privacy.html</loc>
+    <loc>https://jian-peng.github.io/privacy.html</loc>
     <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://jianan-peng.github.io/articles/</loc>
+    <lastmod>2026-05-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <!-- 把 articles 里的每篇文章也加进去 -->
 </urlset>
