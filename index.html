@@ -29,6 +29,85 @@
     color: var(--text);
     line-height: 1.6;
   }
+  body[dir="rtl"] { direction: rtl; }
+
+  /* Language Switcher */
+  .lang-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+  }
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: .85rem;
+    cursor: pointer;
+    transition: all .2s;
+    backdrop-filter: blur(10px);
+  }
+  .lang-btn:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(108,92,231,.2);
+  }
+  .lang-btn .flag { font-size: 1.1rem; }
+  .lang-btn .arrow {
+    font-size: .6rem;
+    transition: transform .2s;
+  }
+  .lang-btn.open .arrow { transform: rotate(180deg); }
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + .5rem);
+    right: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  }
+  body[dir="rtl"] .lang-dropdown { right: auto; left: 0; }
+  .lang-dropdown.show { display: block; }
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .65rem 1rem;
+    color: var(--text);
+    font-size: .85rem;
+    cursor: pointer;
+    transition: background .15s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  body[dir="rtl"] .lang-option { text-align: right; }
+  .lang-option:hover { background: var(--card-hover); }
+  .lang-option.active {
+    background: rgba(108,92,231,.15);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .lang-option .flag { font-size: 1.1rem; width: 1.5rem; text-align: center; }
+  .lang-option .name { flex: 1; }
+  .lang-option .check { opacity: 0; color: var(--accent); }
+  .lang-option.active .check { opacity: 1; }
+
+  /* Scrollbar for dropdown */
+  .lang-dropdown::-webkit-scrollbar { width: 4px; }
+  .lang-dropdown::-webkit-scrollbar-track { background: transparent; }
+  .lang-dropdown::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
   header {
     text-align: center;
@@ -47,6 +126,18 @@
     font-size: 1.05rem;
     max-width: 500px;
     margin: 0 auto;
+  }
+
+  .nav-bar {
+    margin-top:1rem;
+    display:flex;
+    justify-content:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+  }
+  .nav-bar a, .nav-bar span {
+    font-size:.9rem;
+    text-decoration:none;
   }
 
   /* Search */
@@ -81,7 +172,6 @@
 
   .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
 
-  /* Category */
   .category { margin-bottom: 2.5rem; }
   .category-title {
     font-size: 1.15rem;
@@ -101,7 +191,6 @@
     border-radius: 2px;
   }
 
-  /* Grid */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -135,7 +224,6 @@
   .card-body h3 { font-size: .95rem; font-weight: 600; margin-bottom: .2rem; }
   .card-body p { font-size: .8rem; color: var(--text-dim); line-height: 1.4; }
 
-  /* Ad Banner */
   .ad-banner {
     margin: 2rem auto;
     max-width: 1100px;
@@ -166,7 +254,6 @@
     color: var(--text-dim);
   }
 
-  /* Footer */
   footer {
     text-align: center;
     padding: 2.5rem 1rem;
@@ -181,210 +268,250 @@
   @media (max-width: 600px) {
     header h1 { font-size: 1.7rem; }
     .grid { grid-template-columns: 1fr; }
+    .lang-switcher { top: .5rem; right: .5rem; }
+    .lang-btn { padding: .5rem .7rem; font-size: .8rem; }
   }
 </style>
 </head>
 <body>
 
+<!-- Language Switcher -->
+<div class="lang-switcher">
+  <button class="lang-btn" onclick="toggleLangMenu()">
+    <span class="flag" id="current-flag">🇺🇸</span>
+    <span id="current-lang">English</span>
+    <span class="arrow">▼</span>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown">
+    <button class="lang-option active" data-lang="en" onclick="setLang('en')">
+      <span class="flag">🇺🇸</span><span class="name">English</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="zh" onclick="setLang('zh')">
+      <span class="flag">🇨🇳</span><span class="name">中文</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="ja" onclick="setLang('ja')">
+      <span class="flag">🇯🇵</span><span class="name">日本語</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="ko" onclick="setLang('ko')">
+      <span class="flag">🇰🇷</span><span class="name">한국어</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="es" onclick="setLang('es')">
+      <span class="flag">🇪🇸</span><span class="name">Español</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="fr" onclick="setLang('fr')">
+      <span class="flag">🇫🇷</span><span class="name">Français</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="de" onclick="setLang('de')">
+      <span class="flag">🇩🇪</span><span class="name">Deutsch</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="pt" onclick="setLang('pt')">
+      <span class="flag">🇧🇷</span><span class="name">Português</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="ru" onclick="setLang('ru')">
+      <span class="flag">🇷🇺</span><span class="name">Русский</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="ar" onclick="setLang('ar')">
+      <span class="flag">🇸🇦</span><span class="name">العربية</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="hi" onclick="setLang('hi')">
+      <span class="flag">🇮🇳</span><span class="name">हिन्दी</span><span class="check">✓</span>
+    </button>
+    <button class="lang-option" data-lang="th" onclick="setLang('th')">
+      <span class="flag">🇹🇭</span><span class="name">ไทย</span><span class="check">✓</span>
+    </button>
+  </div>
+</div>
+
 <header>
-  <h1>⚡ Best AI Tools 2026</h1>
-  <p>Curated directory of the best AI tools for every task — updated weekly</p>
-  <nav style="margin-top:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
-    <span style="color:var(--accent);font-weight:600;font-size:.9rem;">🛠 Tools</span>
-    <a href="articles/" style="color:var(--accent);text-decoration:none;font-size:.9rem;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.8'">💡 AI Insights (20 Articles)</a>
-    <a href="about.html" style="color:var(--text-dim);text-decoration:none;font-size:.9rem;">About</a>
+  <h1 data-i18n="title">⚡ Best AI Tools 2026</h1>
+  <p data-i18n="subtitle">Curated directory of the best AI tools for every task — updated weekly</p>
+  <nav class="nav-bar">
+    <span style="color:var(--accent);font-weight:600;">🛠 <span data-i18n="nav-tools">Tools</span></span>
+    <a href="articles/" style="color:var(--accent);opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.8'">💡 <span data-i18n="nav-articles">AI Insights (20 Articles)</span></a>
+    <a href="about.html" style="color:var(--text-dim);"><span data-i18n="nav-about">About</span></a>
   </nav>
 </header>
 
 <div class="search-box">
-  <input type="text" id="search" placeholder="Search AI tools..." oninput="filterTools(this.value)">
+  <input type="text" id="search" data-i18n-placeholder="search" placeholder="Search AI tools..." oninput="filterTools(this.value)">
 </div>
 
 <div class="container" id="content">
 
   <!-- Chat & Writing -->
   <section class="category">
-    <div class="category-title">Chat & Writing</div>
+    <div class="category-title" data-i18n="cat-chat">Chat & Writing</div>
     <div class="grid">
       <a href="https://chat.openai.com" target="_blank" rel="noopener" class="card" data-name="ChatGPT">
         <div class="card-icon">🤖</div>
-        <div class="card-body"><h3>ChatGPT</h3><p>Leading AI chatbot by OpenAI. Great for writing, coding, and brainstorming.</p></div>
+        <div class="card-body"><h3>ChatGPT</h3><p data-i18n="d-chatgpt">Leading AI chatbot by OpenAI. Great for writing, coding, and brainstorming.</p></div>
       </a>
       <a href="https://claude.ai" target="_blank" rel="noopener" class="card" data-name="Claude">
         <div class="card-icon">🧠</div>
-        <div class="card-body"><h3>Claude</h3><p>Anthropic's AI assistant. Excels at long-form analysis and reasoning.</p></div>
+        <div class="card-body"><h3>Claude</h3><p data-i18n="d-claude">Anthropic's AI assistant. Excels at long-form analysis and reasoning.</p></div>
       </a>
       <a href="https://gemini.google.com" target="_blank" rel="noopener" class="card" data-name="Gemini">
         <div class="card-icon">✨</div>
-        <div class="card-body"><h3>Gemini</h3><p>Google's multimodal AI. Deep search integration and real-time info.</p></div>
+        <div class="card-body"><h3>Gemini</h3><p data-i18n="d-gemini">Google's multimodal AI. Deep search integration and real-time info.</p></div>
       </a>
       <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="card" data-name="Perplexity">
         <div class="card-icon">🔎</div>
-        <div class="card-body"><h3>Perplexity</h3><p>AI-powered search engine with cited, accurate answers.</p></div>
+        <div class="card-body"><h3>Perplexity</h3><p data-i18n="d-perplexity">AI-powered search engine with cited, accurate answers.</p></div>
       </a>
       <a href="https://jasper.ai" target="_blank" rel="noopener" class="card" data-name="Jasper">
         <div class="card-icon">✍️</div>
-        <div class="card-body"><h3>Jasper</h3><p>AI copywriting for marketing teams. Blog posts, ads, and emails.</p></div>
+        <div class="card-body"><h3>Jasper</h3><p data-i18n="d-jasper">AI copywriting for marketing teams. Blog posts, ads, and emails.</p></div>
       </a>
       <a href="https://copy.ai" target="_blank" rel="noopener" class="card" data-name="Copy.ai">
         <div class="card-icon">📝</div>
-        <div class="card-body"><h3>Copy.ai</h3><p>Free AI copywriter. Generate social posts, emails, and product copy.</p></div>
+        <div class="card-body"><h3>Copy.ai</h3><p data-i18n="d-copyai">Free AI copywriter. Generate social posts, emails, and product copy.</p></div>
       </a>
     </div>
   </section>
 
   <!-- Image & Design -->
   <section class="category">
-    <div class="category-title">Image & Design</div>
+    <div class="category-title" data-i18n="cat-image">Image & Design</div>
     <div class="grid">
       <a href="https://midjourney.com" target="_blank" rel="noopener" class="card" data-name="Midjourney">
         <div class="card-icon">🎨</div>
-        <div class="card-body"><h3>Midjourney</h3><p>Top-tier AI art generator. Stunning, painterly results.</p></div>
+        <div class="card-body"><h3>Midjourney</h3><p data-i18n="d-midjourney">Top-tier AI art generator. Stunning, painterly results.</p></div>
       </a>
       <a href="https://stability.ai" target="_blank" rel="noopener" class="card" data-name="Stable Diffusion">
         <div class="card-icon">🖼️</div>
-        <div class="card-body"><h3>Stable Diffusion</h3><p>Open-source image generation. Run locally, full control.</p></div>
+        <div class="card-body"><h3>Stable Diffusion</h3><p data-i18n="d-stablediffusion">Open-source image generation. Run locally, full control.</p></div>
       </a>
       <a href="https://www.canva.com/ai-image-generator/" target="_blank" rel="noopener" class="card" data-name="Canva AI">
         <div class="card-icon">🎯</div>
-        <div class="card-body"><h3>Canva AI</h3><p>Design platform with built-in AI image and text generation.</p></div>
+        <div class="card-body"><h3>Canva AI</h3><p data-i18n="d-canva">Design platform with built-in AI image and text generation.</p></div>
       </a>
       <a href="https://remove.bg" target="_blank" rel="noopener" class="card" data-name="Remove.bg">
         <div class="card-icon">✂️</div>
-        <div class="card-body"><h3>Remove.bg</h3><p>Instant AI background removal. Free and fast.</p></div>
+        <div class="card-body"><h3>Remove.bg</h3><p data-i18n="d-removebg">Instant AI background removal. Free and fast.</p></div>
       </a>
       <a href="https://leonardo.ai" target="_blank" rel="noopener" class="card" data-name="Leonardo AI">
         <div class="card-icon">🖌️</div>
-        <div class="card-body"><h3>Leonardo AI</h3><p>AI art for game assets, concept art, and design.</p></div>
+        <div class="card-body"><h3>Leonardo AI</h3><p data-i18n="d-leonardo">AI art for game assets, concept art, and design.</p></div>
       </a>
       <a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener" class="card" data-name="Adobe Firefly">
         <div class="card-icon">🔥</div>
-        <div class="card-body"><h3>Adobe Firefly</h3><p>Adobe's generative AI. Commercially safe image creation.</p></div>
+        <div class="card-body"><h3>Adobe Firefly</h3><p data-i18n="d-firefly">Adobe's generative AI. Commercially safe image creation.</p></div>
       </a>
     </div>
   </section>
 
-  <!-- ▼ AD SLOT ▼ -->
   <div class="ad-banner">
-    <div class="ad-inner" id="ad-slot-1">
-      <!-- Replace with your Google AdSense code -->
-      <span>Ad Space — 728×90 / Responsive</span>
-    </div>
+    <div class="ad-inner"><span>Ad Space — 728×90 / Responsive</span></div>
   </div>
-  <!-- ▲ AD SLOT ▲ -->
 
   <!-- Video & Audio -->
   <section class="category">
-    <div class="category-title">Video & Audio</div>
+    <div class="category-title" data-i18n="cat-video">Video & Audio</div>
     <div class="grid">
       <a href="https://sora.com" target="_blank" rel="noopener" class="card" data-name="Sora">
         <div class="card-icon">🎬</div>
-        <div class="card-body"><h3>Sora</h3><p>OpenAI's video generator. Photorealistic scenes from text.</p></div>
+        <div class="card-body"><h3>Sora</h3><p data-i18n="d-sora">OpenAI's video generator. Photorealistic scenes from text.</p></div>
       </a>
       <a href="https://runwayml.com" target="_blank" rel="noopener" class="card" data-name="Runway">
         <div class="card-icon">🎥</div>
-        <div class="card-body"><h3>Runway</h3><p>AI video editing and generation for creators.</p></div>
+        <div class="card-body"><h3>Runway</h3><p data-i18n="d-runway">AI video editing and generation for creators.</p></div>
       </a>
       <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="card" data-name="ElevenLabs">
         <div class="card-icon">🗣️</div>
-        <div class="card-body"><h3>ElevenLabs</h3><p>Ultra-realistic AI voice synthesis and cloning.</p></div>
+        <div class="card-body"><h3>ElevenLabs</h3><p data-i18n="d-elevenlabs">Ultra-realistic AI voice synthesis and cloning.</p></div>
       </a>
       <a href="https://suno.com" target="_blank" rel="noopener" class="card" data-name="Suno">
         <div class="card-icon">🎵</div>
-        <div class="card-body"><h3>Suno</h3><p>Generate full songs from a text prompt. Any genre.</p></div>
+        <div class="card-body"><h3>Suno</h3><p data-i18n="d-suno">Generate full songs from a text prompt. Any genre.</p></div>
       </a>
       <a href="https://heygen.com" target="_blank" rel="noopener" class="card" data-name="HeyGen">
         <div class="card-icon">👤</div>
-        <div class="card-body"><h3>HeyGen</h3><p>AI avatar videos with lip-sync. Great for demos.</p></div>
+        <div class="card-body"><h3>HeyGen</h3><p data-i18n="d-heygen">AI avatar videos with lip-sync. Great for demos.</p></div>
       </a>
       <a href="https://descript.com" target="_blank" rel="noopener" class="card" data-name="Descript">
         <div class="card-icon">🎙️</div>
-        <div class="card-body"><h3>Descript</h3><p>Edit audio/video by editing text. AI-powered studio.</p></div>
+        <div class="card-body"><h3>Descript</h3><p data-i18n="d-descript">Edit audio/video by editing text. AI-powered studio.</p></div>
       </a>
     </div>
   </section>
 
   <!-- Coding & Developer -->
   <section class="category">
-    <div class="category-title">Coding & Developer</div>
+    <div class="category-title" data-i18n="cat-coding">Coding & Developer</div>
     <div class="grid">
       <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="card" data-name="GitHub Copilot">
         <div class="card-icon">💻</div>
-        <div class="card-body"><h3>GitHub Copilot</h3><p>AI pair programmer in your editor. Autocomplete++.</p></div>
+        <div class="card-body"><h3>GitHub Copilot</h3><p data-i18n="d-copilot">AI pair programmer in your editor. Autocomplete++.</p></div>
       </a>
       <a href="https://cursor.sh" target="_blank" rel="noopener" class="card" data-name="Cursor">
         <div class="card-icon">⚡</div>
-        <div class="card-body"><h3>Cursor</h3><p>AI-native code editor. Chat, edit, and build with AI.</p></div>
+        <div class="card-body"><h3>Cursor</h3><p data-i18n="d-cursor">AI-native code editor. Chat, edit, and build with AI.</p></div>
       </a>
       <a href="https://replit.com" target="_blank" rel="noopener" class="card" data-name="Replit">
         <div class="card-icon">🔧</div>
-        <div class="card-body"><h3>Replit</h3><p>Online IDE with AI. Code, run, and deploy instantly.</p></div>
+        <div class="card-body"><h3>Replit</h3><p data-i18n="d-replit">Online IDE with AI. Code, run, and deploy instantly.</p></div>
       </a>
       <a href="https://v0.dev" target="_blank" rel="noopener" class="card" data-name="v0 by Vercel">
         <div class="card-icon">▲</div>
-        <div class="card-body"><h3>v0</h3><p>Generate UI components from text. React + Tailwind.</p></div>
+        <div class="card-body"><h3>v0</h3><p data-i18n="d-v0">Generate UI components from text. React + Tailwind.</p></div>
       </a>
       <a href="https://codeium.com" target="_blank" rel="noopener" class="card" data-name="Codeium">
         <div class="card-icon">🆓</div>
-        <div class="card-body"><h3>Codeium</h3><p>Free AI code completion. Supports 70+ languages.</p></div>
+        <div class="card-body"><h3>Codeium</h3><p data-i18n="d-codeium">Free AI code completion. Supports 70+ languages.</p></div>
       </a>
     </div>
   </section>
 
   <!-- Productivity -->
   <section class="category">
-    <div class="category-title">Productivity</div>
+    <div class="category-title" data-i18n="cat-productivity">Productivity</div>
     <div class="grid">
       <a href="https://notion.so" target="_blank" rel="noopener" class="card" data-name="Notion AI">
         <div class="card-icon">📝</div>
-        <div class="card-body"><h3>Notion AI</h3><p>Notes + AI writing. Knowledge management reimagined.</p></div>
+        <div class="card-body"><h3>Notion AI</h3><p data-i18n="d-notion">Notes + AI writing. Knowledge management reimagined.</p></div>
       </a>
       <a href="https://gamma.app" target="_blank" rel="noopener" class="card" data-name="Gamma">
         <div class="card-icon">📊</div>
-        <div class="card-body"><h3>Gamma</h3><p>AI-powered presentations. Beautiful decks in seconds.</p></div>
+        <div class="card-body"><h3>Gamma</h3><p data-i18n="d-gamma">AI-powered presentations. Beautiful decks in seconds.</p></div>
       </a>
       <a href="https://grammarly.com" target="_blank" rel="noopener" class="card" data-name="Grammarly">
         <div class="card-icon">✍️</div>
-        <div class="card-body"><h3>Grammarly</h3><p>AI writing assistant. Grammar, tone, and clarity.</p></div>
+        <div class="card-body"><h3>Grammarly</h3><p data-i18n="d-grammarly">AI writing assistant. Grammar, tone, and clarity.</p></div>
       </a>
       <a href="https://otter.ai" target="_blank" rel="noopener" class="card" data-name="Otter.ai">
         <div class="card-icon">🦦</div>
-        <div class="card-body"><h3>Otter.ai</h3><p>AI meeting notes. Real-time transcription and summary.</p></div>
+        <div class="card-body"><h3>Otter.ai</h3><p data-i18n="d-otter">AI meeting notes. Real-time transcription and summary.</p></div>
       </a>
       <a href="https://zapier.com" target="_blank" rel="noopener" class="card" data-name="Zapier AI">
         <div class="card-icon">⚡</div>
-        <div class="card-body"><h3>Zapier AI</h3><p>Automate workflows between 6,000+ apps with AI.</p></div>
+        <div class="card-body"><h3>Zapier AI</h3><p data-i18n="d-zapier">Automate workflows between 6,000+ apps with AI.</p></div>
       </a>
     </div>
   </section>
 
-  <!-- ▼ AD SLOT 2 ▼ -->
   <div class="ad-banner">
-    <div class="ad-inner">
-      <span>Ad Space — 728×90 / Responsive</span>
-    </div>
+    <div class="ad-inner"><span>Ad Space — 728×90 / Responsive</span></div>
   </div>
-  <!-- ▲ AD SLOT 2 ▲ -->
 
   <!-- AI Insights Articles -->
   <section class="category">
-    <div class="category-title">💡 AI Insights — Deep Dives &amp; Strategy</div>
+    <div class="category-title" data-i18n="cat-insights">💡 AI Insights — Deep Dives & Strategy</div>
     <div class="grid">
       <a href="articles/" class="card" data-name="AI Articles">
         <div class="card-icon" style="background:linear-gradient(135deg,#6c5ce7,#fd79a8);">📚</div>
-        <div class="card-body"><h3>20 AI Articles</h3><p>Trends, startup strategy, industry applications, and practical wisdom for builders in the AI era.</p></div>
+        <div class="card-body"><h3 data-i18n="a-20articles">20 AI Articles</h3><p data-i18n="d-20articles">Trends, startup strategy, industry applications, and practical wisdom for builders in the AI era.</p></div>
       </a>
       <a href="articles/01-three-waves-of-ai.html" class="card" data-name="Three Waves of AI">
         <div class="card-icon">🌊</div>
-        <div class="card-body"><h3>Three Waves of AI</h3><p>From expert systems to deep learning to LLMs — the evolution that got us here.</p></div>
+        <div class="card-body"><h3 data-i18n="a-waves">Three Waves of AI</h3><p data-i18n="d-waves">From expert systems to deep learning to LLMs — the evolution that got us here.</p></div>
       </a>
       <a href="articles/18-why-ai-startups-die.html" class="card" data-name="Why AI Startups Die">
         <div class="card-icon">💀</div>
-        <div class="card-body"><h3>Why AI Startups Die</h3><p>Lessons from failed AI companies — the seven deadly patterns to avoid.</p></div>
+        <div class="card-body"><h3 data-i18n="a-die">Why AI Startups Die</h3><p data-i18n="d-die">Lessons from failed AI companies — the seven deadly patterns to avoid.</p></div>
       </a>
       <a href="articles/20-ai-startup-endgame-2030.html" class="card" data-name="AI Endgame 2030">
         <div class="card-icon">🔮</div>
-        <div class="card-body"><h3>AI Endgame: 2030</h3><p>Which industries will be reshaped? Where to plant your flag for the long term?</p></div>
+        <div class="card-body"><h3 data-i18n="a-endgame">AI Endgame: 2030</h3><p data-i18n="d-endgame">Which industries will be reshaped? Where to plant your flag for the long term?</p></div>
       </a>
     </div>
   </section>
@@ -393,14 +520,723 @@
 
 <footer>
   <p>
-    <a href="articles/">AI Insights</a> ·
-    <a href="about.html">About</a> ·
-    <a href="privacy.html">Privacy Policy</a>
+    <a href="articles/" data-i18n="nav-articles">AI Insights</a> ·
+    <a href="about.html" data-i18n="nav-about">About</a> ·
+    <a href="privacy.html" data-i18n="footer-privacy">Privacy Policy</a>
   </p>
-  <p style="margin-top:.6rem">Best AI Tools 2026 — Curated & Updated Weekly</p>
+  <p style="margin-top:.6rem" data-i18n="footer-tagline">Best AI Tools 2026 — Curated & Updated Weekly</p>
 </footer>
 
 <script>
+// ===== I18N Translation System =====
+const I18N = {
+  en: {
+    title: "⚡ Best AI Tools 2026",
+    subtitle: "Curated directory of the best AI tools for every task — updated weekly",
+    "nav-tools": "Tools",
+    "nav-articles": "AI Insights (20 Articles)",
+    "nav-about": "About",
+    search: "Search AI tools...",
+    "cat-chat": "Chat & Writing",
+    "cat-image": "Image & Design",
+    "cat-video": "Video & Audio",
+    "cat-coding": "Coding & Developer",
+    "cat-productivity": "Productivity",
+    "cat-insights": "💡 AI Insights — Deep Dives & Strategy",
+    "d-chatgpt": "Leading AI chatbot by OpenAI. Great for writing, coding, and brainstorming.",
+    "d-claude": "Anthropic's AI assistant. Excels at long-form analysis and reasoning.",
+    "d-gemini": "Google's multimodal AI. Deep search integration and real-time info.",
+    "d-perplexity": "AI-powered search engine with cited, accurate answers.",
+    "d-jasper": "AI copywriting for marketing teams. Blog posts, ads, and emails.",
+    "d-copyai": "Free AI copywriter. Generate social posts, emails, and product copy.",
+    "d-midjourney": "Top-tier AI art generator. Stunning, painterly results.",
+    "d-stablediffusion": "Open-source image generation. Run locally, full control.",
+    "d-canva": "Design platform with built-in AI image and text generation.",
+    "d-removebg": "Instant AI background removal. Free and fast.",
+    "d-leonardo": "AI art for game assets, concept art, and design.",
+    "d-firefly": "Adobe's generative AI. Commercially safe image creation.",
+    "d-sora": "OpenAI's video generator. Photorealistic scenes from text.",
+    "d-runway": "AI video editing and generation for creators.",
+    "d-elevenlabs": "Ultra-realistic AI voice synthesis and cloning.",
+    "d-suno": "Generate full songs from a text prompt. Any genre.",
+    "d-heygen": "AI avatar videos with lip-sync. Great for demos.",
+    "d-descript": "Edit audio/video by editing text. AI-powered studio.",
+    "d-copilot": "AI pair programmer in your editor. Autocomplete++.",
+    "d-cursor": "AI-native code editor. Chat, edit, and build with AI.",
+    "d-replit": "Online IDE with AI. Code, run, and deploy instantly.",
+    "d-v0": "Generate UI components from text. React + Tailwind.",
+    "d-codeium": "Free AI code completion. Supports 70+ languages.",
+    "d-notion": "Notes + AI writing. Knowledge management reimagined.",
+    "d-gamma": "AI-powered presentations. Beautiful decks in seconds.",
+    "d-grammarly": "AI writing assistant. Grammar, tone, and clarity.",
+    "d-otter": "AI meeting notes. Real-time transcription and summary.",
+    "d-zapier": "Automate workflows between 6,000+ apps with AI.",
+    "a-20articles": "20 AI Articles",
+    "d-20articles": "Trends, startup strategy, industry applications, and practical wisdom for builders in the AI era.",
+    "a-waves": "Three Waves of AI",
+    "d-waves": "From expert systems to deep learning to LLMs — the evolution that got us here.",
+    "a-die": "Why AI Startups Die",
+    "d-die": "Lessons from failed AI companies — the seven deadly patterns to avoid.",
+    "a-endgame": "AI Endgame: 2030",
+    "d-endgame": "Which industries will be reshaped? Where to plant your flag for the long term?",
+    "footer-privacy": "Privacy Policy",
+    "footer-tagline": "Best AI Tools 2026 — Curated & Updated Weekly"
+  },
+  zh: {
+    title: "⚡ 2026最佳AI工具",
+    subtitle: "精选AI工具目录，涵盖写作、图像、视频、编程和效率工具——每周更新",
+    "nav-tools": "工具",
+    "nav-articles": "💡 AI洞察（20篇文章）",
+    "nav-about": "关于",
+    search: "搜索AI工具...",
+    "cat-chat": "聊天与写作",
+    "cat-image": "图像与设计",
+    "cat-video": "视频与音频",
+    "cat-coding": "编程与开发",
+    "cat-productivity": "效率工具",
+    "cat-insights": "💡 AI洞察——深度分析与策略",
+    "d-chatgpt": "OpenAI旗下领先AI聊天机器人，适合写作、编程和头脑风暴。",
+    "d-claude": "Anthropic的AI助手，擅长长文分析和推理。",
+    "d-gemini": "Google多模态AI，深度搜索集成与实时信息。",
+    "d-perplexity": "AI驱动的搜索引擎，提供带引用的准确答案。",
+    "d-jasper": "面向营销团队的AI文案工具，博客、广告、邮件一键生成。",
+    "d-copyai": "免费AI文案生成器，社交媒体、邮件、产品文案轻松搞定。",
+    "d-midjourney": "顶级AI艺术生成器，产出令人惊艳的画作风格作品。",
+    "d-stablediffusion": "开源图像生成，本地运行，完全掌控。",
+    "d-canva": "集成AI图像和文本生成的设计平台。",
+    "d-removebg": "即时AI背景去除，免费且快速。",
+    "d-leonardo": "面向游戏素材、概念艺术和设计的AI艺术工具。",
+    "d-firefly": "Adobe的生成式AI，商业安全的图像创作。",
+    "d-sora": "OpenAI的视频生成器，文字生成逼真场景。",
+    "d-runway": "面向创作者的AI视频编辑和生成工具。",
+    "d-elevenlabs": "超逼真的AI语音合成与克隆。",
+    "d-suno": "文字提示生成完整歌曲，支持任何风格。",
+    "d-heygen": "带唇形同步的AI虚拟人视频，演示利器。",
+    "d-descript": "编辑文字即编辑音视频，AI驱动的工作室。",
+    "d-copilot": "编辑器中的AI结对编程伙伴，代码补全++。",
+    "d-cursor": "AI原生代码编辑器，对话、编辑、构建一体化。",
+    "d-replit": "在线AI IDE，即时编码、运行和部署。",
+    "d-v0": "文字生成UI组件，React + Tailwind。",
+    "d-codeium": "免费AI代码补全，支持70+编程语言。",
+    "d-notion": "笔记+AI写作，知识管理重新定义。",
+    "d-gamma": "AI驱动的演示文稿，秒级生成精美幻灯片。",
+    "d-grammarly": "AI写作助手，语法、语气和清晰度优化。",
+    "d-otter": "AI会议记录，实时转录和摘要。",
+    "d-zapier": "AI驱动的自动化工作流，连接6000+应用。",
+    "a-20articles": "20篇AI文章",
+    "d-20articles": "趋势、创业策略、行业应用，为AI时代建设者提供的实战智慧。",
+    "a-waves": "AI的三次浪潮",
+    "d-waves": "从专家系统到深度学习再到大模型——带我们走到今天的进化之路。",
+    "a-die": "AI创业公司为什么会死",
+    "d-die": "从失败的AI公司中汲取教训——七大致命模式。",
+    "a-endgame": "AI终局：2030",
+    "d-endgame": "哪些行业将被重塑？你的旗帜应该插在哪里？",
+    "footer-privacy": "隐私政策",
+    "footer-tagline": "2026最佳AI工具——精选与每周更新"
+  },
+  ja: {
+    title: "⚡ 2026年ベストAIツール",
+    subtitle: "ライティング、画像、動画、コーディング、生産性のための厳選AIツールディレクトリ — 毎週更新",
+    "nav-tools": "ツール",
+    "nav-articles": "💡 AIインサイト（20記事）",
+    "nav-about": "概要",
+    search: "AIツールを検索...",
+    "cat-chat": "チャット＆ライティング",
+    "cat-image": "画像＆デザイン",
+    "cat-video": "動画＆オーディオ",
+    "cat-coding": "コーディング＆開発",
+    "cat-productivity": "生産性",
+    "cat-insights": "💡 AIインサイト — 深い分析と戦略",
+    "d-chatgpt": "OpenAIの先進的AIチャットボット。ライティング、コーディング、ブレインストーミングに最適。",
+    "d-claude": "AnthropicのAIアシスタント。長文分析と推論に優れる。",
+    "d-gemini": "GoogleのマルチモーダルAI。高度な検索統合とリアルタイム情報。",
+    "d-perplexity": "AI搭載検索エンジン。引用付きの正確な回答。",
+    "d-jasper": "マーケティングチーム向けAIコピーライティング。ブログ、広告、メール。",
+    "d-copyai": "無料AIコピーライター。SNS投稿、メール、商品コピーを生成。",
+    "d-midjourney": "トップクラスのAIアート生成器。見事な絵画風の結果。",
+    "d-stablediffusion": "オープンソース画像生成。ローカル実行、完全制御。",
+    "d-canva": "AI画像・テキスト生成を内蔵したデザインプラットフォーム。",
+    "d-removebg": "瞬時のAI背景除去。無料で高速。",
+    "d-leonardo": "ゲームアセット、コンセプトアート、デザイン向けAIアート。",
+    "d-firefly": "Adobeの生成AI。商用安全な画像作成。",
+    "d-sora": "OpenAIの動画生成器。テキストから写実的なシーンを生成。",
+    "d-runway": "クリエイター向けAI動画編集・生成。",
+    "d-elevenlabs": "超高品質なAI音声合成とクローン。",
+    "d-suno": "テキストプロンプトからフル曲を生成。ジャンル不問。",
+    "d-heygen": "リップシンク付きAIアバター動画。デモに最適。",
+    "d-descript": "テキスト編集で音声・動画を編集。AI搭載スタジオ。",
+    "d-copilot": "エディタ内のAIペアプログラマー。オートコンプリート++。",
+    "d-cursor": "AIネイティブコードエディタ。チャット、編集、ビルドをAIで。",
+    "d-replit": "AI搭載オンラインIDE。即座にコーディング、実行、デプロイ。",
+    "d-v0": "テキストからUIコンポーネントを生成。React + Tailwind。",
+    "d-codeium": "無料AIコード補完。70以上の言語をサポート。",
+    "d-notion": "ノート＋AIライティング。ナレッジマネージメントの再定義。",
+    "d-gamma": "AI搭載プレゼンテーション。数秒で美しいスライドを。",
+    "d-grammarly": "AIライティングアシスタント。文法、トーン、明瞭性。",
+    "d-otter": "AI議事録。リアルタイム文字起こしと要約。",
+    "d-zapier": "6,000以上のアプリをAIで自動化。",
+    "a-20articles": "20のAI記事",
+    "d-20articles": "トレンド、スタートアップ戦略、業界アプリケーション、AI時代の構築者向け実践知恵。",
+    "a-waves": "AIの3つの波",
+    "d-waves": "エキスパートシステムから深層学習、LLMまで——私たちをここまで導いた進化。",
+    "a-die": "AIスタートアップが失敗する理由",
+    "d-die": "失敗したAI企業からの教訓——7つの致命的なパターン。",
+    "a-endgame": "AIエンドゲーム：2030",
+    "d-endgame": "どの業界が再構築されるか？旗を立てるべき場所は？",
+    "footer-privacy": "プライバシーポリシー",
+    "footer-tagline": "2026年ベストAIツール — 厳選＆毎週更新"
+  },
+  ko: {
+    title: "⚡ 2026 최고의 AI 도구",
+    subtitle: "글쓰기, 이미지, 영상, 코딩, 생산성을 위한 엄선된 AI 도구 디렉토리 — 매주 업데이트",
+    "nav-tools": "도구",
+    "nav-articles": "💡 AI 인사이트 (20개 기사)",
+    "nav-about": "소개",
+    search: "AI 도구 검색...",
+    "cat-chat": "채팅 & 글쓰기",
+    "cat-image": "이미지 & 디자인",
+    "cat-video": "영상 & 오디오",
+    "cat-coding": "코딩 & 개발",
+    "cat-productivity": "생산성",
+    "cat-insights": "💡 AI 인사이트 — 심층 분석 및 전략",
+    "d-chatgpt": "OpenAI의 선도적 AI 챗봇. 글쓰기, 코딩, 브레인스토밍에 탁월.",
+    "d-claude": "Anthropic의 AI 어시스턴트. 장문 분석 및 추론에 뛰어남.",
+    "d-gemini": "Google의 멀티모달 AI. 깊은 검색 통합과 실시간 정보.",
+    "d-perplexity": "AI 기반 검색 엔진. 인용이 포함된 정확한 답변.",
+    "d-jasper": "마케팅 팀을 위한 AI 카피라이팅. 블로그, 광고, 이메일.",
+    "d-copyai": "무료 AI 카피라이터. 소셜 게시물, 이메일, 제품 카피 생성.",
+    "d-midjourney": "최고급 AI 아트 생성기. 놀라운 회화풍 결과.",
+    "d-stablediffusion": "오픈소스 이미지 생성. 로컬 실행, 완전 제어.",
+    "d-canva": "AI 이미지 및 텍스트 생성이 내장된 디자인 플랫폼.",
+    "d-removebg": "즉시 AI 배경 제거. 무료이고 빠름.",
+    "d-leonardo": "게임 에셋, 컨셉 아트, 디자인을 위한 AI 아트.",
+    "d-firefly": "Adobe의 생성 AI. 상업적으로 안전한 이미지 제작.",
+    "d-sora": "OpenAI의 영상 생성기. 텍스트에서 사실적인 장면 생성.",
+    "d-runway": "크리에이터를 위한 AI 영상 편집 및 생성.",
+    "d-elevenlabs": "초현실적 AI 음성 합성 및 클로닝.",
+    "d-suno": "텍스트 프롬프트로 전체 곡 생성. 모든 장르.",
+    "d-heygen": "립싱크가 가능한 AI 아바타 영상. 데모에 좋음.",
+    "d-descript": "텍스트 편집으로 오디오/비디오 편집. AI 기반 스튜디오.",
+    "d-copilot": "에디터 내 AI 페어 프로그래머. 자동 완성++.",
+    "d-cursor": "AI 네이티브 코드 에디터. 채팅, 편드, 빌드를 AI로.",
+    "d-replit": "AI가 탑재된 온라인 IDE. 즉시 코딩, 실행, 배포.",
+    "d-v0": "텍스트에서 UI 컴포넌트 생성. React + Tailwind.",
+    "d-codeium": "무료 AI 코드 완성. 70개 이상 언어 지원.",
+    "d-notion": "노트 + AI 글쓰기. 지식 관리의 재정의.",
+    "d-gamma": "AI 기반 프레젠테이션. 몇 초 만에 아름다운 슬라이드.",
+    "d-grammarly": "AI 글쓰기 어시스턴트. 문법, 톤, 명확성.",
+    "d-otter": "AI 회의록. 실시간 전사 및 요약.",
+    "d-zapier": "6,000개 이상의 앱을 AI로 자동화.",
+    "a-20articles": "20개 AI 기사",
+    "d-20articles": "트렌드, 스타트업 전략, 산업 애플리케이션, AI 시대 빌더를 위한 실용적 지혜.",
+    "a-waves": "AI의 세 가지 물결",
+    "d-waves": "전문가 시스템부터 딥러닝, LLM까지 — 우리를 여기까지 이끈 진화.",
+    "a-die": "AI 스타트업이 실패하는 이유",
+    "d-die": "실패한 AI 기업의 교훈 — 피해야 할 7가지 치명적 패턴.",
+    "a-endgame": "AI 엔드게임: 2030",
+    "d-endgame": "어떤 산업이 재편될까? 깃발을 꽂을 곳은?",
+    "footer-privacy": "개인정보 처리방침",
+    "footer-tagline": "2026 최고의 AI 도구 — 엄선 & 매주 업데이트"
+  },
+  es: {
+    title: "⚡ Mejores Herramientas AI 2026",
+    subtitle: "Directorio curado de las mejores herramientas AI para cada tarea — actualizado semanalmente",
+    "nav-tools": "Herramientas",
+    "nav-articles": "💡 Perspectivas AI (20 Artículos)",
+    "nav-about": "Acerca de",
+    search: "Buscar herramientas AI...",
+    "cat-chat": "Chat y Escritura",
+    "cat-image": "Imagen y Diseño",
+    "cat-video": "Video y Audio",
+    "cat-coding": "Código y Desarrollo",
+    "cat-productivity": "Productividad",
+    "cat-insights": "💡 Perspectivas AI — Análisis Profundo y Estrategia",
+    "d-chatgpt": "Chatbot AI líder de OpenAI. Ideal para escribir, programar y hacer lluvia de ideas.",
+    "d-claude": "Asistente AI de Anthropic. Destaca en análisis de textos largos y razonamiento.",
+    "d-gemini": "AI multimodal de Google. Búsqueda profunda e información en tiempo real.",
+    "d-perplexity": "Motor de búsqueda con AI. Respuestas precisas con citas.",
+    "d-jasper": "Copywriting AI para equipos de marketing. Blogs, anuncios y emails.",
+    "d-copyai": "Copywriter AI gratuito. Genera posts, emails y textos de producto.",
+    "d-midjourney": "Generador de arte AI de primer nivel. Resultados impresionantes.",
+    "d-stablediffusion": "Generación de imágenes de código abierto. Ejecución local, control total.",
+    "d-canva": "Plataforma de diseño con generación AI de imágenes y texto integrada.",
+    "d-removebg": "Eliminación de fondos AI instantánea. Gratis y rápida.",
+    "d-leonardo": "Arte AI para assets de juegos, arte conceptual y diseño.",
+    "d-firefly": "AI generativa de Adobe. Creación de imágenes comercialmente segura.",
+    "d-sora": "Generador de video de OpenAI. Escenas fotorrealistas desde texto.",
+    "d-runway": "Edición y generación de video AI para creadores.",
+    "d-elevenlabs": "Síntesis y clonación de voz AI ultrarrealista.",
+    "d-suno": "Genera canciones completas desde un prompt de texto. Cualquier género.",
+    "d-heygen": "Videos de avatares AI con sincronización labial. Genial para demos.",
+    "d-descript": "Edita audio/video editando texto. Estudio impulsado por AI.",
+    "d-copilot": "Programador par AI en tu editor. Autocompletado++.",
+    "d-cursor": "Editor de código nativo AI. Chatea, edita y construye con AI.",
+    "d-replit": "IDE online con AI. Codifica, ejecuta y despliega al instante.",
+    "d-v0": "Genera componentes UI desde texto. React + Tailwind.",
+    "d-codeium": "Autocompletado de código AI gratuito. Soporta 70+ lenguajes.",
+    "d-notion": "Notas + escritura AI. Gestión del conocimiento reimaginada.",
+    "d-gamma": "Presentaciones con AI. Diapositivas hermosas en segundos.",
+    "d-grammarly": "Asistente de escritura AI. Gramática, tono y claridad.",
+    "d-otter": "Notas de reunión AI. Transcripción y resumen en tiempo real.",
+    "d-zapier": "Automatiza flujos entre 6,000+ apps con AI.",
+    "a-20articles": "20 Artículos AI",
+    "d-20articles": "Tendencias, estrategia de startups, aplicaciones industriales y sabiduría práctica para constructores en la era AI.",
+    "a-waves": "Tres Olas de AI",
+    "d-waves": "De sistemas expertos a deep learning hasta LLMs — la evolución que nos trajo aquí.",
+    "a-die": "Por Qué Mueren las Startups AI",
+    "d-die": "Lecciones de empresas AI fallidas — los siete patrones mortales a evitar.",
+    "a-endgame": "Final del Juego AI: 2030",
+    "d-endgame": "¿Qué industrias se transformarán? ¿Dónde plantar tu bandera?",
+    "footer-privacy": "Política de Privacidad",
+    "footer-tagline": "Mejores Herramientas AI 2026 — Curadas y Actualizadas Semanalmente"
+  },
+  fr: {
+    title: "⚡ Meilleurs Outils IA 2026",
+    subtitle: "Annuaire curé des meilleurs outils IA pour chaque tâche — mis à jour chaque semaine",
+    "nav-tools": "Outils",
+    "nav-articles": "💡 Perspectives IA (20 Articles)",
+    "nav-about": "À propos",
+    search: "Rechercher des outils IA...",
+    "cat-chat": "Chat et Rédaction",
+    "cat-image": "Image et Design",
+    "cat-video": "Vidéo et Audio",
+    "cat-coding": "Code et Développement",
+    "cat-productivity": "Productivité",
+    "cat-insights": "💡 Perspectives IA — Analyses Approfondies et Stratégie",
+    "d-chatgpt": "Chatbot IA leader d'OpenAI. Idéal pour rédiger, coder et brainstormer.",
+    "d-claude": "Assistant IA d'Anthropic. Excellent pour l'analyse longue et le raisonnement.",
+    "d-gemini": "IA multimodale de Google. Recherche approfondie et infos en temps réel.",
+    "d-perplexity": "Moteur de recherche IA. Réponses précises avec citations.",
+    "d-jasper": "Rédaction IA pour équipes marketing. Blogs, pubs et emails.",
+    "d-copyai": "Rédacteur IA gratuit. Posts, emails et textes produits.",
+    "d-midjourney": "Générateur d'art IA haut de gamme. Résultats époustouflants.",
+    "d-stablediffusion": "Génération d'images open source. Exécution locale, contrôle total.",
+    "d-canva": "Plateforme de design avec génération IA d'images et de texte intégrée.",
+    "d-removebg": "Suppression de fond IA instantanée. Gratuit et rapide.",
+    "d-leonardo": "Art IA pour assets de jeux, art conceptuel et design.",
+    "d-firefly": "IA générative d'Adobe. Création d'images commercialement sûre.",
+    "d-sora": "Générateur vidéo d'OpenAI. Scènes photoréalistes depuis du texte.",
+    "d-runway": "Édition et génération vidéo IA pour créateurs.",
+    "d-elevenlabs": "Synthèse et clonage vocal IA ultraréalistes.",
+    "d-suno": "Générez des chansons complètes depuis un prompt. Tout genre.",
+    "d-heygen": "Vidéos d'avatars IA avec synchronisation labiale. Parfait pour les démos.",
+    "d-descript": "Éditez audio/vidéo en éditant du texte. Studio IA.",
+    "d-copilot": "Programmeur pair IA dans votre éditeur. Autocomplétion++.",
+    "d-cursor": "Éditeur de code natif IA. Chat, édition et construction avec IA.",
+    "d-replit": "IDE en ligne avec IA. Codez, exécutez et déployez instantanément.",
+    "d-v0": "Générez des composants UI depuis du texte. React + Tailwind.",
+    "d-codeium": "Autocomplétion de code IA gratuite. 70+ langages supportés.",
+    "d-notion": "Notes + rédaction IA. Gestion des connaissances réinventée.",
+    "d-gamma": "Présentations IA. Decks magnifiques en secondes.",
+    "d-grammarly": "Assistant rédaction IA. Grammaire, ton et clarté.",
+    "d-otter": "Notes de réunion IA. Transcription et résumé en temps réel.",
+    "d-zapier": "Automatisez les workflows entre 6 000+ apps avec l'IA.",
+    "a-20articles": "20 Articles IA",
+    "d-20articles": "Tendances, stratégie startups, applications industrielles et sagesse pratique pour les bâtisseurs de l'ère IA.",
+    "a-waves": "Trois Vagues de l'IA",
+    "d-waves": "Des systèmes experts au deep learning aux LLMs — l'évolution qui nous a menés ici.",
+    "a-die": "Pour Quoi les Startups IA Meurent",
+    "d-die": "Leçons d'entreprises IA échouées — les sept schémas mortels à éviter.",
+    "a-endgame": "Fin de Partie IA : 2030",
+    "d-endgame": "Quelles industries seront transformées ? Où planter votre drapeau ?",
+    "footer-privacy": "Politique de Confidentialité",
+    "footer-tagline": "Meilleurs Outils IA 2026 — Curés et Mis à Chaque Semaine"
+  },
+  de: {
+    title: "⚡ Beste KI-Tools 2026",
+    subtitle: "Kuratiertes KI-Tool-Verzeichnis für jede Aufgabe — wöchentlich aktualisiert",
+    "nav-tools": "Tools",
+    "nav-articles": "💡 KI-Einblicke (20 Artikel)",
+    "nav-about": "Über uns",
+    search: "KI-Tools suchen...",
+    "cat-chat": "Chat & Schreiben",
+    "cat-image": "Bild & Design",
+    "cat-video": "Video & Audio",
+    "cat-coding": "Code & Entwicklung",
+    "cat-productivity": "Produktivität",
+    "cat-insights": "💡 KI-Einblicke — Tiefgehende Analysen & Strategie",
+    "d-chatgpt": "Führender KI-Chatbot von OpenAI. Ideal zum Schreiben, Coden und Brainstorming.",
+    "d-claude": "KI-Assistent von Anthropic. Hervorragend bei Langtextanalyse und Reasoning.",
+    "d-gemini": "Multimodale KI von Google. Tiefe Suchintegration und Echtzeitinformationen.",
+    "d-perplexity": "KI-gestützte Suchmaschine. Genaue Antworten mit Quellenangaben.",
+    "d-jasper": "KI-Texterstellung für Marketingteams. Blogs, Anzeigen und E-Mails.",
+    "d-copyai": "Freier KI-Texter. Social Posts, E-Mails und Produkttexte generieren.",
+    "d-midjourney": "Erstklassiger KI-Kunstgenerator. Atemberaubende Ergebnisse.",
+    "d-stablediffusion": "Open-Source-Bildgenerierung. Lokale Ausführung, volle Kontrolle.",
+    "d-canva": "Designplattform mit integrierter KI-Bild- und Textgenerierung.",
+    "d-removebg": "Sofortige KI-Hintergrundentfernung. Kostenlos und schnell.",
+    "d-leonardo": "KI-Kunst für Game-Assets, Concept Art und Design.",
+    "d-firefly": "Generative KI von Adobe. Kommerziell sichere Bilderstellung.",
+    "d-sora": "Videogenerator von OpenAI. Fotorealistische Szenen aus Text.",
+    "d-runway": "KI-Video-Bearbeitung und -Generierung für Kreative.",
+    "d-elevenlabs": "Ultra-realistische KI-Stimmsynthese und -Klonierung.",
+    "d-suno": "Generiere komplette Songs aus einem Textprompt. Jedes Genre.",
+    "d-heygen": "KI-Avatar-Videos mit Lippen-Sync. Perfekt für Demos.",
+    "d-descript": "Audio/Video durch Textbearbeitung editieren. KI-Studio.",
+    "d-copilot": "KI-Paarprogrammierer in deinem Editor. Autovervollständigung++.",
+    "d-cursor": "KI-nativer Code-Editor. Chatten, bearbeiten und bauen mit KI.",
+    "d-replit": "Online-IDE mit KI. Sofort coden, ausführen und deployen.",
+    "d-v0": "UI-Komponenten aus Text generieren. React + Tailwind.",
+    "d-codeium": "Freie KI-Codevervollständigung. Unterstützt 70+ Sprachen.",
+    "d-notion": "Notizen + KI-Schreiben. Wissensmanagement neu gedacht.",
+    "d-gamma": "KI-Präsentationen. Wunderschöne Folien in Sekunden.",
+    "d-grammarly": "KI-Schreibassistent. Grammatik, Ton und Klarheit.",
+    "d-otter": "KI-Besprechungsnotizen. Echtzeit-Transkription und Zusammenfassung.",
+    "d-zapier": "Automatisiere Workflows zwischen 6.000+ Apps mit KI.",
+    "a-20articles": "20 KI-Artikel",
+    "d-20articles": "Trends, Startup-Strategie, Branchenanwendungen und praktische Weisheit für Builder der KI-Ära.",
+    "a-waves": "Drei Wellen der KI",
+    "d-waves": "Von Expertensystemen zu Deep Learning zu LLMs — die Evolution, die uns hierher gebracht hat.",
+    "a-die": "Warum KI-Startups Scheitern",
+    "d-die": "Lektionen gescheiterter KI-Unternehmen — die sieben tödlichen Muster.",
+    "a-endgame": "KI-Endspiel: 2030",
+    "d-endgame": "Welche Branchen werden umgestaltet? Wo setzen Sie Ihre Flagge?",
+    "footer-privacy": "Datenschutz",
+    "footer-tagline": "Beste KI-Tools 2026 — Kuratiert & Wöchentlich Aktualisiert"
+  },
+  pt: {
+    title: "⚡ Melhores Ferramentas de IA 2026",
+    subtitle: "Diretório curado das melhores ferramentas de IA para cada tarefa — atualizado semanalmente",
+    "nav-tools": "Ferramentas",
+    "nav-articles": "💡 Insights de IA (20 Artigos)",
+    "nav-about": "Sobre",
+    search: "Buscar ferramentas de IA...",
+    "cat-chat": "Chat e Escrita",
+    "cat-image": "Imagem e Design",
+    "cat-video": "Vídeo e Áudio",
+    "cat-coding": "Código e Desenvolvimento",
+    "cat-productivity": "Produtividade",
+    "cat-insights": "💡 Insights de IA — Análises Aprofundadas e Estratégia",
+    "d-chatgpt": "Chatbot de IA líder da OpenAI. Ideal para escrever, codar e brainstorming.",
+    "d-claude": "Assistente de IA da Anthropic. Excelente em análise de textos longos e raciocínio.",
+    "d-gemini": "IA multimodal do Google. Busca profunda e informações em tempo real.",
+    "d-perplexity": "Mecanismo de busca com IA. Respostas precisas com citações.",
+    "d-jasper": "Copywriting com IA para equipes de marketing. Blogs, anúncios e emails.",
+    "d-copyai": "Copywriter de IA gratuito. Posts, emails e textos de produto.",
+    "d-midjourney": "Gerador de arte IA de alto nível. Resultados impressionantes.",
+    "d-stablediffusion": "Geração de imagens open source. Execução local, controle total.",
+    "d-canva": "Plataforma de design com geração de imagens e texto por IA integrada.",
+    "d-removebg": "Remoção de fundo IA instantânea. Grátis e rápida.",
+    "d-leonardo": "Arte IA para assets de jogos, arte conceitual e design.",
+    "d-firefly": "IA generativa da Adobe. Criação de imagens comercialmente segura.",
+    "d-sora": "Gerador de vídeo da OpenAI. Cenas fotorrealistas a partir de texto.",
+    "d-runway": "Edição e geração de vídeo com IA para criadores.",
+    "d-elevenlabs": "Síntese e clonagem de voz IA ultrarrealista.",
+    "d-suno": "Gere músicas completas a partir de um prompt de texto. Qualquer gênero.",
+    "d-heygen": "Vídeos de avatares IA com sincronização labial. Ótimo para demos.",
+    "d-descript": "Edite áudio/vídeo editando texto. Estúdio com IA.",
+    "d-copilot": "Programador par IA no seu editor. Autocompletar++.",
+    "d-cursor": "Editor de código nativo IA. Chat, edição e construção com IA.",
+    "d-replit": "IDE online com IA. Code, execute e faça deploy instantaneamente.",
+    "d-v0": "Gere componentes de UI a partir de texto. React + Tailwind.",
+    "d-codeium": "Autocompletar de código IA gratuito. Suporta 70+ linguagens.",
+    "d-notion": "Notas + escrita com IA. Gestão do conhecimento reinventada.",
+    "d-gamma": "Apresentações com IA. Slides bonitos em segundos.",
+    "d-grammarly": "Assistente de escrita IA. Gramática, tom e clareza.",
+    "d-otter": "Notas de reunião IA. Transcrição e resumo em tempo real.",
+    "d-zapier": "Automatize fluxos entre 6.000+ apps com IA.",
+    "a-20articles": "20 Artigos de IA",
+    "d-20articles": "Tendências, estratégia de startups, aplicações industriais e sabedoria prática para construtores na era da IA.",
+    "a-waves": "Três Ondas da IA",
+    "d-waves": "De sistemas especialistas ao deep learning até LLMs — a evolução que nos trouxe aqui.",
+    "a-die": "Por Que Startups de IA Morrem",
+    "d-die": "Lições de empresas de IA que falharam — os sete padrões mortais a evitar.",
+    "a-endgame": "Fim de Jogo da IA: 2030",
+    "d-endgame": "Quais indústrias serão transformadas? Onde plantar sua bandeira?",
+    "footer-privacy": "Política de Privacidade",
+    "footer-tagline": "Melhores Ferramentas de IA 2026 — Curadas e Atualizadas Semanalmente"
+  },
+  ru: {
+    title: "⚡ Лучшие ИИ-инструменты 2026",
+    subtitle: "Курируемый каталог лучших ИИ-инструментов для каждой задачи — обновляется еженедельно",
+    "nav-tools": "Инструменты",
+    "nav-articles": "💡 ИИ-аналитика (20 статей)",
+    "nav-about": "О нас",
+    search: "Поиск ИИ-инструментов...",
+    "cat-chat": "Чат и тексты",
+    "cat-image": "Изображения и дизайн",
+    "cat-video": "Видео и аудио",
+    "cat-coding": "Код и разработка",
+    "cat-productivity": "Продуктивность",
+    "cat-insights": "💡 ИИ-аналитика — Глубокий анализ и стратегия",
+    "d-chatgpt": "Ведущий ИИ-чатбот от OpenAI. Идеален для текстов, кода и мозгового штурма.",
+    "d-claude": "ИИ-ассистент от Anthropic. Превосходен в анализе длинных текстов и рассуждениях.",
+    "d-gemini": "Мультимодальный ИИ от Google. Глубокая интеграция поиска и информация в реальном времени.",
+    "d-perplexity": "ИИ-поисковая система. Точные ответы с цитированием.",
+    "d-jasper": "ИИ-копирайтинг для маркетинговых команд. Блоги, объявления и письма.",
+    "d-copyai": "Бесплатный ИИ-копирайтер. Посты, письма и тексты продуктов.",
+    "d-midjourney": "ИИ-генератор искусства высшего уровня. Потрясающие результаты.",
+    "d-stablediffusion": "Генерация изображений с открытым исходным кодом. Локальный запуск, полный контроль.",
+    "d-canva": "Платформа дизайна со встроенной ИИ-генерацией изображений и текста.",
+    "d-removebg": "Мгновенное удаление фона с ИИ. Бесплатно и быстро.",
+    "d-leonardo": "ИИ-арт для игровых ассетов, концепт-арта и дизайна.",
+    "d-firefly": "Генеративный ИИ от Adobe. Коммерчески безопасное создание изображений.",
+    "d-sora": "Генератор видео от OpenAI. Фотореалистичные сцены из текста.",
+    "d-runway": "ИИ-редактирование и генерация видео для авторов.",
+    "d-elevenlabs": "Ультрареалистичный ИИ-синтез и клонирование голоса.",
+    "d-suno": "Создание полноценных песен из текстового запроса. Любой жанр.",
+    "d-heygen": "Видео с ИИ-аватарами и синхронизацией губ. Отлично для демо.",
+    "d-descript": "Редактирование аудио/видео через текст. ИИ-студия.",
+    "d-copilot": "ИИ-парный программист в вашем редакторе. Автодополнение++.",
+    "d-cursor": "ИИ-нативный редактор кода. Чат, редактирование и сборка с ИИ.",
+    "d-replit": "Онлайн-IDE с ИИ. Мгновенное написание, запуск и развёртывание.",
+    "d-v0": "Генерация UI-компонентов из текста. React + Tailwind.",
+    "d-codeium": "Бесплатное ИИ-дополнение кода. Поддержка 70+ языков.",
+    "d-notion": "Заметки + ИИ-тексты. Управление знаниями по-новому.",
+    "d-gamma": "ИИ-презентации. Красивые слайды за секунды.",
+    "d-grammarly": "ИИ-помощник для текстов. Грамматика, тон и ясность.",
+    "d-otter": "ИИ-заметки встреч. Транскрипция и резюме в реальном времени.",
+    "d-zapier": "Автоматизация рабочих процессов между 6000+ приложений с ИИ.",
+    "a-20articles": "20 ИИ-статей",
+    "d-20articles": "Тренды, стратегия стартапов, отраслевые применения и практическая мудрость для строителей эпохи ИИ.",
+    "a-waves": "Три волны ИИ",
+    "d-waves": "От экспертных систем к глубокому обучению и LLM — эволюция, которая привела нас сюда.",
+    "a-die": "Почему умирают ИИ-стартапы",
+    "d-die": "Уроки провалившихся ИИ-компаний — семь смертельных паттернов.",
+    "a-endgame": "ИИ-эндшпиль: 2030",
+    "d-endgame": "Какие отрасли будут трансформированы? Где установить свой флаг?",
+    "footer-privacy": "Политика конфиденциальности",
+    "footer-tagline": "Лучшие ИИ-инструменты 2026 — Курируемый и обновляемый еженедельно"
+  },
+  ar: {
+    title: "⚡ أفضل أدوات الذكاء الاصطناعي 2026",
+    subtitle: "دليل منسق لأفضل أدوات الذكاء الاصطناعي لكل مهمة — يُحدّث أسبوعياً",
+    "nav-tools": "أدوات",
+    "nav-articles": "💡 رؤى الذكاء الاصطناعي (20 مقالاً)",
+    "nav-about": "حول",
+    search: "البحث عن أدوات الذكاء الاصطناعي...",
+    "cat-chat": "المحادثة والكتابة",
+    "cat-image": "الصور والتصميم",
+    "cat-video": "الفيديو والصوت",
+    "cat-coding": "البرمجة والتطوير",
+    "cat-productivity": "الإنتاجية",
+    "cat-insights": "💡 رؤى الذكاء الاصطناعي — تحليلات متعمقة واستراتيجية",
+    "d-chatgpt": "روبوت دردشة الذكاء الاصطناعي الرائد من OpenAI. ممتاز للكتابة والبرمجة والعصف الذهني.",
+    "d-claude": "مساعد الذكاء الاصطناعي من Anthropic. يتفوق في تحليل النصوص الطويلة والاستدلال.",
+    "d-gemini": "الذكاء الاصطناعي متعدد الوسائط من Google. بحث عميق ومعلومات فورية.",
+    "d-perplexity": "محرك بحث مدعوم بالذكاء الاصطناعي. إجابات دقيقة مع الاستشهادات.",
+    "d-jasper": "كتابة إعلانية بالذكاء الاصطناعي لفرق التسويق. مدونات وإعلانات ورسائل.",
+    "d-copyai": "كاتب إعلاني مجاني بالذكاء الاصطناعي. منشورات ورسائل ونصوص منتجات.",
+    "d-midjourney": "مولد فنون الذكاء الاصطناعي من الدرجة الأولى. نتائج مذهلة.",
+    "d-stablediffusion": "توليد الصور مفتوح المصدر. تشغيل محلي، تحكم كامل.",
+    "d-canva": "منصة تصميم مع توليد صور ونصوص بالذكاء الاصطناعي.",
+    "d-removebg": "إزالة خلفية فورية بالذكاء الاصطناعي. مجاني وسريع.",
+    "d-leonardo": "فن الذكاء الاصطناعي لألعاب الفيديو والفن المفاهيمي والتصميم.",
+    "d-firefly": "الذكاء الاصطناعي التوليدي من Adobe. إنشاء صور آمن تجارياً.",
+    "d-sora": "مولد الفيديو من OpenAI. مشاهد واقعية من النص.",
+    "d-runway": "تحرير وتوليد الفيديو بالذكاء الاصطناعي للمبدعين.",
+    "d-elevenlabs": "توليد أصوات ونسخها بالذكاء الاصطناعي واقعي للغاية.",
+    "d-suno": "إنشاء أغاني كاملة من نص. أي نوع موسيقي.",
+    "d-heygen": "فيديوهات أفاتار بالذكاء الاصطناعي مع مزامنة الشفاه. ممتاز للعروض.",
+    "d-descript": "تحرير الصوت/الفيديو عبر تحرير النص. استوديو بالذكاء الاصطناعي.",
+    "d-copilot": "مبرمج زوجي بالذكاء الاصطناعي في محررك. إكمال تلقائي++.",
+    "d-cursor": "محرر كود أصلي بالذكاء الاصطناعي. دردشة وتحرير وبناء مع الذكاء الاصطناعي.",
+    "d-replit": "IDE онлайн مع الذكاء الاصطناعي. كتابة وتشغيل ونشر فوري.",
+    "d-v0": "توليد مكونات واجهة المستخدم من النص. React + Tailwind.",
+    "d-codeium": "إكمال كود مجاني بالذكاء الاصطناعي. يدعم أكثر من 70 لغة.",
+    "d-notion": "ملاحظات + كتابة بالذكاء الاصطناعي. إدارة المعرفة بشكل جديد.",
+    "d-gamma": "عروض تقديمية بالذكاء الاصطناعي. شرائح جميلة في ثوانٍ.",
+    "d-grammarly": "مساعد كتابة بالذكاء الاصطناعي. القواعد والنبرة والوضوح.",
+    "d-otter": "ملاحظات اجتماعات بالذكاء الاصطناعي. نسخ وملخص فوري.",
+    "d-zapier": "أتمتة سير العمل بين أكثر من 6000 تطبيق بالذكاء الاصطناعي.",
+    "a-20articles": "20 مقالاً عن الذكاء الاصطناعي",
+    "d-20articles": "الاتجاهات واستراتيجية الشركات الناشئة وتطبيقات الصناعة والحكمة العملية لبناة عصر الذكاء الاصطناعي.",
+    "a-waves": "ثلاث موجات من الذكاء الاصطناعي",
+    "d-waves": "من الأنظمة الخبيرة إلى التعلم العميق إلى النماذج اللغوية الكبيرة — التطور الذي أوصلنا إلى هنا.",
+    "a-die": "لماذا تفشل شركات الذكاء الاصطناعي الناشئة",
+    "d-die": "دروس من شركات الذكاء الاصطناعي الفاشلة — الأنماط السبعة القاتلة.",
+    "a-endgame": "لعبة الذكاء الاصطناعي النهائية: 2030",
+    "d-endgame": "أي الصناعات سيتم إعادة تشكيلها؟ أين تضع راياتك؟",
+    "footer-privacy": "سياسة الخصوصية",
+    "footer-tagline": "أفضل أدوات الذكاء الاصطناعي 2026 — منسقة ومحدّثة أسبوعياً"
+  },
+  hi: {
+    title: "⚡ 2026 के सर्वश्रेष्ठ AI टूल्स",
+    subtitle: "हर कार्य के लिए सर्वश्रेष्ठ AI टूल्स की क्यूरेटेड डायरेक्टरी — साप्ताहिक अपडेट",
+    "nav-tools": "टूल्स",
+    "nav-articles": "💡 AI इनसाइट्स (20 लेख)",
+    "nav-about": "हमारे बारे में",
+    search: "AI टूल्स खोजें...",
+    "cat-chat": "चैट और लेखन",
+    "cat-image": "छवि और डिज़ाइन",
+    "cat-video": "वीडियो और ऑडियो",
+    "cat-coding": "कोडिंग और डेवलपमेंट",
+    "cat-productivity": "उत्पादकता",
+    "cat-insights": "💡 AI इनसाइट्स — गहन विश्लेषण और रणनीति",
+    "d-chatgpt": "OpenAI का अग्रणी AI चैटबॉट। लेखन, कोडिंग और ब्रेनस्टॉर्मिंग के लिए बढ़िया।",
+    "d-claude": "Anthropic का AI सहायक। लंबे विश्लेषण और तर्क में उत्कृष्ट।",
+    "d-gemini": "Google का मल्टीमॉडल AI। गहन खोज एकीकरण और रीयल-टाइम जानकारी।",
+    "d-perplexity": "AI-संचालित खोज इंजन। उद्धरणों के साथ सटीक उत्तर।",
+    "d-jasper": "मार्केटिंग टीमों के लिए AI कॉपीराइटिंग। ब्लॉग, विज्ञापन और ईमेल।",
+    "d-copyai": "मुफ्त AI कॉपीराइटर। सोशल पोस्ट, ईमेल और प्रोडक्ट कॉपी जनरेट करें।",
+    "d-midjourney": "शीर्ष स्तर का AI आर्ट जनरेटर। शानदार परिणाम।",
+    "d-stablediffusion": "ओपन-सोर्स छवि जनरेशन। लोकल रन, पूर्ण नियंत्रण।",
+    "d-canva": "AI छवि और टेक्स्ट जनरेशन के साथ डिज़ाइन प्लेटफ़ॉर्म।",
+    "d-removebg": "तत्काल AI बैकग्राउंड हटाना। मुफ्त और तेज़।",
+    "d-leonardo": "गेम एसेट्स, कॉन्सेप्ट आर्ट और डिज़ाइन के लिए AI आर्ट।",
+    "d-firefly": "Adobe का जनरेटिव AI। व्यावसायिक रूप से सुरक्षित छवि निर्माण।",
+    "d-sora": "OpenAI का वीडियो जनरेटर। टेक्स्ट से फोटोरियलिस्टिक दृश्य।",
+    "d-runway": "रचनाकारों के लिए AI वीडियो संपादन और जनरेशन।",
+    "d-elevenlabs": "अत्यंत यथार्थवादी AI आवाज़ संश्लेषण और क्लोनिंग।",
+    "d-suno": "टेक्स्ट प्रॉम्प्ट से पूरे गाने जनरेट करें। कोई भी शैली।",
+    "d-heygen": "लिप-सिंक के साथ AI अवतार वीडियो। डेमो के लिए बढ़िया।",
+    "d-descript": "टेक्स्ट संपादित करके ऑडियो/वीडियो संपादित करें। AI-संचालित स्टूडियो।",
+    "d-copilot": "आपके एडिटर में AI जोड़ी प्रोग्रामर। ऑटोकम्प्लीट++।",
+    "d-cursor": "AI-नेटिव कोड एडिटर। चैट, संपादन और निर्माण AI के साथ।",
+    "d-replit": "AI के साथ ऑनलाइन IDE। तुरंत कोड, रन और डिप्लॉय।",
+    "d-v0": "टेक्स्ट से UI कंपोनेंट जनरेट करें। React + Tailwind।",
+    "d-codeium": "मुफ्त AI कोड कम्प्लीशन। 70+ भाषाओं का समर्थन।",
+    "d-notion": "नोट्स + AI लेखन। ज्ञान प्रबंधन नए सिरे से।",
+    "d-gamma": "AI-संचालित प्रेजेंटेशन। सेकंडों में सुंदर स्लाइड।",
+    "d-grammarly": "AI लेखन सहायक। व्याकरण, स्वर और स्पष्टता।",
+    "d-otter": "AI मीटिंग नोट्स। रीयल-टाइम ट्रांसक्रिप्शन और सारांश।",
+    "d-zapier": "AI के साथ 6,000+ ऐप्स के बीच वर्कफ़्लो को स्वचालित करें।",
+    "a-20articles": "20 AI लेख",
+    "d-20articles": "रुझान, स्टार्टअप रणनीति, उद्योग अनुप्रयोग और AI युग के निर्माताओं के लिए व्यावहारिक ज्ञान।",
+    "a-waves": "AI की तीन लहरें",
+    "d-waves": "विशेषज्ञ प्रणालियों से डीप लर्निंग तक LLM तक — विकास जो हमें यहाँ लाया।",
+    "a-die": "AI स्टार्टअप क्यों मरते हैं",
+    "d-die": "असफल AI कंपनियों से सबक — सात घातक पैटर्न।",
+    "a-endgame": "AI एंडगेम: 2030",
+    "d-endgame": "कौन से उद्योग बदलेंगे? अपना झंडा कहाँ लगाएंगे?",
+    "footer-privacy": "गोपनीयता नीति",
+    "footer-tagline": "2026 के सर्वश्रेष्ठ AI टूल्स — क्यूरेटेड और साप्ताहिक अपडेट"
+  },
+  th: {
+    title: "⚡ เครื่องมือ AI ที่ดีที่สุด 2026",
+    subtitle: "ไดเรกทอรีเครื่องมือ AI ที่คัดสรรสำหรับทุกงาน — อัปเดตทุกสัปดาห์",
+    "nav-tools": "เครื่องมือ",
+    "nav-articles": "💡 ข้อมูลเชิงลึก AI (20 บทความ)",
+    "nav-about": "เกี่ยวกับ",
+    search: "ค้นหาเครื่องมือ AI...",
+    "cat-chat": "แชทและการเขียน",
+    "cat-image": "รูปภาพและการออกแบบ",
+    "cat-video": "วิดีโอและเสียง",
+    "cat-coding": "โค้ดและการพัฒนา",
+    "cat-productivity": "ประสิทธิภาพ",
+    "cat-insights": "💡 ข้อมูลเชิงลึก AI — การวิเคราะห์เชิงลึกและกลยุทธ์",
+    "d-chatgpt": "แชทบอท AI ชั้นนำจาก OpenAI เหมาะสำหรับการเขียน โค้ด และระดมความคิด",
+    "d-claude": "ผู้ช่วย AI จาก Anthropic เด่นในการวิเคราะห์ข้อความยาวและการให้เหตุผล",
+    "d-gemini": "AI แบบมัลติมอดัลจาก Google การค้นหาเชิงลึกและข้อมูลแบบเรียลไทม์",
+    "d-perplexity": "เสิร์ชเอนจินที่ขับเคลื่อนด้วย AI คำตอบที่ถูกต้องพร้อมการอ้างอิง",
+    "d-jasper": "การเขียนคำโฆษณาด้วย AI สำหรับทีมการตลาด บล็อก โฆษณา และอีเมล",
+    "d-copyai": "นักเขียนคำโฆษณา AI ฟรี โพสต์โซเชียล อีเมล และคำอธิบายผลิตภัณฑ์",
+    "d-midjourney": "เครื่องมือสร้างศิลปะ AI ระดับ顶级 ผลลัพธ์ที่น่าทึ่ง",
+    "d-stablediffusion": "การสร้างภาพโอเพนซอร์ส รันในเครื่อง ควบคุมได้เต็มที่",
+    "d-canva": "แพลตฟอร์มการออกแบบพร้อมการสร้างภาพและข้อความด้วย AI",
+    "d-removebg": "ลบพื้นหลังด้วย AI ทันที ฟรีและเร็ว",
+    "d-leonardo": "ศิลปะ AI สำหรับเกม ศิลปะแนวคิด และการออกแบบ",
+    "d-firefly": "AI แบบเจนเนอเรทีฟจาก Adobe การสร้างภาพที่ปลอดภัยทางการค้า",
+    "d-sora": "เครื่องมือสร้างวิดีโอจาก OpenAI ฉากที่สมจริงจากข้อความ",
+    "d-runway": "การตัดต่อและสร้างวิดีโอด้วย AI สำหรับครีเอเตอร์",
+    "d-elevenlabs": "การสังเคราะห์และโคลนนิ่งเสียง AI ที่สมจริงมาก",
+    "d-suno": "สร้างเพลงเต็มจากข้อความ ทุกแนวเพลง",
+    "d-heygen": "วิดีโออวาตาร์ AI พร้อมการซิงค์ริมฝีปาก ดีสำหรับเดโม",
+    "d-descript": "ตัดต่อเสียง/วิดีโอโดยการ编辑ข้อความ สตูดิโอที่ขับเคลื่อนด้วย AI",
+    "d-copilot": "โปรแกรมเมอร์คู่ AI ในเอดิเตอร์ของคุณ อัตโนมัติ++",
+    "d-cursor": "โค้ดเอดิเตอร์เนทีฟ AI แชท 编辑 และสร้างด้วย AI",
+    "d-replit": "IDE ออนไลน์พร้อม AI เขียน รัน และดีพลอยทันที",
+    "d-v0": "สร้างคอมโพเนนต์ UI จากข้อความ React + Tailwind",
+    "d-codeium": "การเติมโค้ด AI ฟรี รองรับ 70+ ภาษา",
+    "d-notion": "บันทึก + การเขียน AI การจัดการความรู้รูปแบบใหม่",
+    "d-gamma": "งานนำเสนอที่ขับเคลื่อนด้วย AI สไลด์ที่สวยงามในไม่กี่วินาที",
+    "d-grammarly": "ผู้ช่วยเขียน AI ไวยากรณ์ น้ำเสียง และความชัดเจน",
+    "d-otter": "บันทึกการประชุม AI การถอดเสียงและสรุปแบบเรียลไทม์",
+    "d-zapier": "ระบบอัตโนมัติเวิร์กโฟลว์ระหว่าง 6,000+ แอปด้วย AI",
+    "a-20articles": "20 บทความ AI",
+    "d-20articles": "แนวโน้ม กลยุทธ์สตาร์ทอัพ การประยุกต์ใช้ในอุตสาหกรรม และภูมิปัญญาเชิงปฏิบัติสำหรับผู้สร้างในยุค AI",
+    "a-waves": "สามคลื่นของ AI",
+    "d-waves": "จากระบบผู้เชี่ยวชาญสู่การเรียนรู้เชิงลึกสู่ LLM — วิวัฒนาการที่นำเรามาที่นี่",
+    "a-die": "ทำไมสตาร์ทอัพ AI ถึงตาย",
+    "d-die": "บทเรียนจากบริษัท AI ที่ล้มเหลว — รูปแบบร้ายแรง 7 ประการ",
+    "a-endgame": "เกมสุดท้ายของ AI: 2030",
+    "d-endgame": "อุตสาหกรรมใดจะถูกเปลี่ยนแปลง? คุณจะปักธงที่ไหน?",
+    "footer-privacy": "นโยบายความเป็นส่วนตัว",
+    "footer-tagline": "เครื่องมือ AI ที่ดีที่สุด 2026 — คัดสรรและอัปเดตทุกสัปดาห์"
+  }
+};
+
+const LANG_META = {
+  en: { flag: "🇺🇸", name: "English" },
+  zh: { flag: "🇨🇳", name: "中文" },
+  ja: { flag: "🇯🇵", name: "日本語" },
+  ko: { flag: "🇰🇷", name: "한국어" },
+  es: { flag: "🇪🇸", name: "Español" },
+  fr: { flag: "🇫🇷", name: "Français" },
+  de: { flag: "🇩🇪", name: "Deutsch" },
+  pt: { flag: "🇧🇷", name: "Português" },
+  ru: { flag: "🇷🇺", name: "Русский" },
+  ar: { flag: "🇸🇦", name: "العربية" },
+  hi: { flag: "🇮🇳", name: "हिन्दी" },
+  th: { flag: "🇹🇭", name: "ไทย" }
+};
+
+function setLang(lang) {
+  if (!I18N[lang]) return;
+  const dict = I18N[lang];
+
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.textContent = dict[key];
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key]) el.placeholder = dict[key];
+  });
+
+  // Update html lang
+  document.documentElement.lang = lang;
+
+  // RTL for Arabic
+  if (lang === 'ar') {
+    document.body.setAttribute('dir', 'rtl');
+  } else {
+    document.body.removeAttribute('dir');
+  }
+
+  // Update button display
+  const meta = LANG_META[lang];
+  document.getElementById('current-flag').textContent = meta.flag;
+  document.getElementById('current-lang').textContent = meta.name;
+
+  // Update active state
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
+  });
+
+  // Save preference
+  localStorage.setItem('preferred-lang', lang);
+
+  // Close dropdown
+  closeLangMenu();
+}
+
+function toggleLangMenu() {
+  const dropdown = document.getElementById('lang-dropdown');
+  const btn = document.querySelector('.lang-btn');
+  const isOpen = dropdown.classList.contains('show');
+  if (isOpen) {
+    closeLangMenu();
+  } else {
+    dropdown.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+
+function closeLangMenu() {
+  document.getElementById('lang-dropdown').classList.remove('show');
+  document.querySelector('.lang-btn').classList.remove('open');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.lang-switcher')) closeLangMenu();
+});
+
+// Filter tools
 function filterTools(q) {
   q = q.toLowerCase();
   document.querySelectorAll('.card').forEach(c => {
@@ -409,6 +1245,20 @@ function filterTools(q) {
     c.style.display = (name.includes(q) || text.includes(q)) ? '' : 'none';
   });
 }
+
+// Init: load saved language or detect browser language
+(function() {
+  const saved = localStorage.getItem('preferred-lang');
+  if (saved && I18N[saved]) {
+    setLang(saved);
+    return;
+  }
+  // Detect browser language
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2).toLowerCase();
+  if (I18N[browserLang]) {
+    setLang(browserLang);
+  }
+})();
 </script>
 </body>
 </html>
